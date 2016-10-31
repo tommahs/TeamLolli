@@ -14,3 +14,10 @@ def csv_write(file, info_to_file):
         writer.writerow(info_to_file)
     csvwrite.close()
 # put info_to_file into this format: [example1,example2,example3,]
+
+
+
+
+def inputquestion(comment):
+    Input = input("{} : ".format(comment))
+    return Input
