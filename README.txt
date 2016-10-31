@@ -7,14 +7,3 @@
 #       Tom van Hamersveld
 #############################################
 
-###
-#
-##
-
-
-##########
-# test
-
-####
-# JAOER/ teST
-# Runescape for saradomin

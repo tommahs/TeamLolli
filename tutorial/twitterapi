@@ -1,0 +1,57 @@
+import TwitterAPI
+
+########
+# Authentication with twitter
+####
+
+consumer_key = ''
+consumer_secret, = ''
+access_token_key, = ''
+access_token_secret = ''
+
+
+api = TwitterAPI(consumer_key,
+                 consumer_secret,
+                 access_token_key,
+                 access_token_secret)
+
+########
+# Get your last 50 tweets
+####
+r = api.request('statuses/home_timeline', {'count':50})
+for item in r.get_iterator():
+    if 'text' in item:
+        print item['text']
+
+########
+# Get your entire timeline
+####
+pager = TwitterRestPager(api, 'statuses/home_timeline', {'count':200})
+for item in pager.get_iterator(wait=60):
+    if 'text' in item:
+        print item['text']
+
+########
+# Post a tweet
+#####
+r = api.request('statuses/update', {'status': 'I need pizza!'})
+print 'SUCCESS' if r.status_code == 200 else 'FAILURE'
+
+########
+# Delete a tweet
+######
+r = api.request('statuses/destroy/:%d' % TWEET_ID)
+print 'SUCCESS' if r.status_code == 200 else 'FAILURE'
+
+
+########
+# Stream tweets
+######
+
+r = api.request('statuses/filter', {'track':'pizza'})
+for item in r.get_iterator():
+    if 'text' in item:
+        print item['text']
+
+
+
