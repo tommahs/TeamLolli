@@ -8,11 +8,11 @@ owm_nl = pyowm.OWM(language='nl') # Nederlandse taal
 #     observation = owm.weather_at_place('Utrecht',owm_nl)
 #     today = observation.get_weather
 
-#Forcast will it rrain in Utrecht
+#Forcast will it rrain in Utrecht Tomorrow
 forecast = owm.daily_forecast('Utrecht,nl',limit=5)
-current = pyowm.timeutils.now()
-forecast.will_be_rainy_at(current)
-x = forecast.will_be_rainy_at(current)
+tomorrow = pyowm.timeutils.tomorrow()
+forecast.will_be_rainy_at(tomorrow)
+x = forecast.will_be_rainy_at(tomorrow)
 # print ('will it rain?:', x)
 
 # search Current weather
@@ -37,7 +37,7 @@ f.get_reception_time('iso')
 fc.when_ends()
 lst = f.get_weathers()
 for weather in lst:
-    print (weather.get_reference_time('iso'),weather.get_status())
+    print (weather.get_reference_time('iso'),weather.get_detailed_status())
 
 
 # Will it be sunny tomorrow at this time in Utrecht ?
