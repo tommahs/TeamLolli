@@ -34,7 +34,7 @@ for item in pager.get_iterator(wait=60):
 ########
 # Post a tweet
 #####
-r = api.request('statuses/update', {'status': 'I need pizza!'})
+r = api.request('statuses/update', {'status': 'I need pizza!'}) '{}'.format(berichtklant)
 print 'SUCCESS' if r.status_code == 200 else 'FAILURE'
 
 ########
