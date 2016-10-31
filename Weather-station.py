@@ -33,7 +33,8 @@ print (' Vandaag is het weer:','\n',
        'Momentele temperatuur:', w.get_temperature(unit='celsius'),'\n',
        'Hoeveel wolken aanwezig:', w.get_clouds(),'%','\n',
        'Kans op regen:', w.get_rain(),'%', '\n',
-       "Windkracht:", w.get_wind,'\n',)
+       "Windkracht:", w.get_wind,'\n',
+       )
 
 # Forecast Section
 fc = owm.three_hours_forecast('Utrecht,nl')
@@ -41,7 +42,7 @@ f = fc.get_forecast()
 f.get_reception_time('iso')
 fc.when_ends()
 lst = f.get_weathers()
-print ('voorspelling van om de 3 uur')
+print('voorspelling van om de 3 uur')
 for weather in lst:
     print('\n', weather.get_reference_time('iso'),weather.get_detailed_status())
 
