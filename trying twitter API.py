@@ -17,7 +17,8 @@ oauth = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token
 r = oauth.request('statuses/user_timeline', {'count':2,'screen_name':'MarijnBecking'})
 for item in r.get_iterator():
     if 'text' in item:
-        print (item['text'])
+        print (item) #On top of the term item can be placed an term from within the dict by doing a: item['*specified element']
+# From this we get an "dict line with every element"(json)
 
 ## Trying to tweet something, dont use this one yet for this is later used
 ## r = oauth.request('statuses/update', {'status': 'simple tweet'})
