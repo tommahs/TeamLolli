@@ -18,14 +18,14 @@ r = oauth.request('statuses/user_timeline', {'count': 2,'screen_name' : 'MarijnB
 
 for item in r.get_iterator():
     if 'text' in item:
-        print(item) #On top of the term item can be placed an term from within the dict by doing a: item['*specified element']
+        print(item['text']) #On top of the term item can be placed an term from within the dict by doing a: item['*specified element']
 
 
 
 # From this we get an "dict line with every element"(json)
 
 ## Trying to tweet something, dont use this one yet for this is later used
-## r = oauth.request('statuses/update', {'status': 'simple tweet'})
+## r = oauth.request('statuses/update', {'status': 'simple tweet #NS'})
 ## print('SUCCES' if r.status_code == 200 else 'FAILURE')
 
 # # Getting 50 recent tweets
