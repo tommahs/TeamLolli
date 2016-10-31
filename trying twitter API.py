@@ -41,24 +41,28 @@ for item in r.get_iterator():
 #########
 # Tom Test
 # Reading tweets, sorting them based on the Hashtags
-r = oauth.request('statuses/user_timeline', {'count': 50}) #define wanted data from twitter
+
+
+#####
+# The following function reads the tweets, compares them to a value in a defined lst,
+# and gives back the hashtag, text and date/time of creation
+####
+r = oauth.request('statuses/user_timeline', {'count': 50}) #define ammount of wanted data from twitter
 tweets = []
-htlst=['ZombieHype', 'ShinyThing'] # using a list for the hashtags
-
-
-for item in r.get_iterator(): # Grab data from twitter
-    entities = item['entities'] # Accessing the subdictionary
-    hashtags = entities['hashtags'] # Is apparently a list of dictionaries
-    if 'text' in item: #if there is text in an item :
-        try: # Try/except to get rid of invalid data
-            for eachhashtag in hashtags: # for each hashtaglist in hashtags
-                for shortstation in htlst: # Check each possible abbreviation of the station
-                    if eachhashtag['text'] == shortstation: #Check if the hashtag equals a shortstation
-                        print('hashtag: #{} \ntext : {}'.format(eachhashtag['text'], item['text'])) # print the result
-                        print(item['created_at'])
-        except: # If the try fails with an error, do the following:
-            if IndexError: #if there isnt an hashtag in hashtags, it means that the list is empty, and gives an IndexError
-                continue # Continue the for-loop
-
+hashtaglst = ['ZombieHype', 'ShinyThing'] # using a list for the hashtags
+def tweetreader(lst):
+    for item in r.get_iterator(): # Grab data from twitter
+        entities = item['entities'] # Accessing the subdictionary
+        hashtagslst = entities['hashtags'] # Is apparently a list of dictionaries
+        if 'text' in item: #if there is text in an item :
+            try: # Try/except to get rid of invalid data
+                for eachhtdict in hashtagslst: # for each hashtagdict in hashtaglist
+                    if eachhtdict['text'] in lst: # If the hashtag in dictionary['text] is in the list:
+                        print('hashtag: #{} \ntext : {}'.format(eachhtdict['text'], item['text'])) # print the hashtag & text
+                        print(item['created_at']) #print date/time of creation
+            except: # If the try fails with an error, do the following:
+                if IndexError: #if there isnt an hashtag in hashtags, it means that the list is empty, and gives an IndexError
+                    continue # Continue the for-loop
+tweetreader(hashtaglst)
 # str day month year, text
 # counter for checking the
