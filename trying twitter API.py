@@ -19,9 +19,9 @@ for item in r.get_iterator():
     if 'text' in item:
         print (item['text'])
 
-# # Trying to tweet something
-# r = oauth.request('statuses/update', {'status': 'simple tweet'})
-# print('SUCCES' if r.status_code == 200 else 'FAILURE')
+## Trying to tweet something, dont use this one yet for this is later used
+## r = oauth.request('statuses/update', {'status': 'simple tweet'})
+## print('SUCCES' if r.status_code == 200 else 'FAILURE')
 
 # # Getting 50 recent tweets
 # r = oauth.request('statuses/home_timeline', {'count':50})
