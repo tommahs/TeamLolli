@@ -47,10 +47,10 @@ for item in r.get_iterator():
 # The following function reads the tweets, compares them to a value in a defined lst,
 # and gives back the hashtag, text and date/time of creation
 ####
-r = oauth.request('statuses/user_timeline', {'count': 50}) #define ammount of wanted data from twitter
 tweets = []
 hashtaglst = ['ZombieHype', 'ShinyThing'] # using a list for the hashtags
 def tweetreader(lst):
+    r = oauth.request('statuses/user_timeline', {'count': 50})  # define ammount of wanted data from twitter
     for item in r.get_iterator(): # Grab data from twitter
         entities = item['entities'] # Accessing the subdictionary
         hashtagslst = entities['hashtags'] # Is apparently a list of dictionaries
@@ -63,6 +63,41 @@ def tweetreader(lst):
             except: # If the try fails with an error, do the following:
                 if IndexError: #if there isnt an hashtag in hashtags, it means that the list is empty, and gives an IndexError
                     continue # Continue the for-loop
-tweetreader(hashtaglst)
+# tweetreader(hashtaglst)
+
+
+
+### WORK IN PROGRESS
 # str day month year, text
-# counter for checking the
+# counter for checking the tweet #
+customtweetcount = 0
+shortstation = 'UTR'
+tweetlst = []
+
+# Optimalize the date, Sort each tweet in the corresponding dictionary for different regions
+for item in r.get_iterator():
+    customtweetcount +=1
+    monthdict = {'Jan': 1, 'Feb': 2, 'Mar': 3,
+                 'Apr': 4, 'May': 5, 'Jun': 6,
+                 'Jul': 7, 'Aug': 8, 'Sep': 9,
+                 'Oct': 10, 'Nov': 11, 'Dec': 12
+                 }
+    if 'text' in item:
+        datetime = item['created_at']
+        datelst = datetime.split(sep=' ')
+        day = int(datelst[2])
+        monthname = datelst[1]
+        monthnum = int(monthdict[monthname])
+        year = int(datelst[5])
+        time = datelst[3]
+        datelst = time, day, monthname, year
+        line1 = {'Tweetnum' : customtweetcount,
+                 'Year': year,
+                 'Month': monthnum,
+                 'Day': day,
+                 'Time': time,
+                 'Text': item['text'],
+                 'Hashtag' : shortstation
+                 }
+        tweetlst.append(line1)
+print(tweetlst)
