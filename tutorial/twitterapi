@@ -3,11 +3,15 @@ import TwitterAPI
 ########
 # Authentication with twitter
 ####
+Consumer Key (API Key)    4y80L7AkxgHOUWgmxCmtmsa5H
+Consumer Secret (API Secret)    vJqX4rfOzI0xUviCzTZvacVmAjRGINdSFQlrmFuHydWdAHj29w
+Access Token    751746308-MhnwFjcA1xkdgf0FTsDmbfiF0Bjv89ZEzhqrnDH6
+Access Token Secret    OXm1d9oAqSuO4FEjqZR4kwOy4gJITJEWGxCsM5K6vIw1o
 
-consumer_key = ''
-consumer_secret, = ''
-access_token_key, = ''
-access_token_secret = ''
+consumer_key = '4y80L7AkxgHOUWgmxCmtmsa5H'
+consumer_secret, = 'vJqX4rfOzI0xUviCzTZvacVmAjRGINdSFQlrmFuHydWdAHj29w'
+access_token_key, = '751746308-MhnwFjcA1xkdgf0FTsDmbfiF0Bjv89ZEzhqrnDH6'
+access_token_secret = 'OXm1d9oAqSuO4FEjqZR4kwOy4gJITJEWGxCsM5K6vIw1o'
 
 
 api = TwitterAPI(consumer_key,
