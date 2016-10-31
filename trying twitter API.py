@@ -13,9 +13,15 @@ access_token_secret = 'OXm1d9oAqSuO4FEjqZR4kwOy4gJITJEWGxCsM5K6vIw1o'
 
 oauth = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret )
 
-# Trying to tweet something
-r = oauth.request('statuses/update', {'status': 'simple tweet'})
-print('SUCCES' if r.status_code == 200 else 'FAILURE')
+# Requesting tweets from specific user
+r = oauth.request('statuses/user_timeline', {'count':2,'screen_name':'MarijnBecking'})
+for item in r.get_iterator():
+    if 'text' in item:
+        print (item['text'])
+
+# # Trying to tweet something
+# r = oauth.request('statuses/update', {'status': 'simple tweet'})
+# print('SUCCES' if r.status_code == 200 else 'FAILURE')
 
 # # Getting 50 recent tweets
 # r = oauth.request('statuses/home_timeline', {'count':50})
