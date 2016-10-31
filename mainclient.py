@@ -27,7 +27,7 @@ def inputwritecsv():
     from datetime import datetime
     import csv
     with open('clients.csv', 'w', newline='') as csvfile:
-        # reader = csv.reader(csvfile, delimiter=';')
+        # reader = csv.reader(csvfile.csv, delimiter=';')
         writer = csv.writer(csvfile, delimiter=';')
         # writer.writerow(('firstname', 'lastname', 'text', 'date'))
         loop = 1
