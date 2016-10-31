@@ -3,6 +3,3 @@
 # mainclient.py, mainadmin.py and mainscreen.py can be run apart from eachother.
 #
 ####
-
-def inputnameclient():
-    firstname = input("Firstname : ")
