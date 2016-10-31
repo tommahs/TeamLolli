@@ -27,7 +27,7 @@ w.get_clouds()                                      # Cloud Coverage
 w.get_rain()                                        # get volume regen
 w.get_detailed_status()                             # Get detailed weather status
 
-
+# The Printing Press
 print (' Vandaag is het weer:','\n',
         'Momentele status:', w.get_detailed_status(),'\n',
        'Momentele temperatuur:', w.get_temperature(unit='celsius'),'\n',
@@ -41,6 +41,7 @@ f = fc.get_forecast()
 f.get_reception_time('iso')
 fc.when_ends()
 lst = f.get_weathers()
+print ('voorspelling van om de 3 uur')
 for weather in lst:
     print('\n', weather.get_reference_time('iso'),weather.get_detailed_status())
 
