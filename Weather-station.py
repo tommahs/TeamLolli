@@ -1,4 +1,4 @@
-import pyowm
+import pyowm, tkinter as tk
 
 owm = pyowm.OWM('1060b54135410b3cf1bd80a73b8ac92a')  # You MUST provide a valid API key
 owm_nl = pyowm.OWM(language='nl') # Nederlandse taal
@@ -14,6 +14,7 @@ tomorrow = pyowm.timeutils.tomorrow()
 forecast.will_be_rainy_at(tomorrow)
 x = forecast.will_be_rainy_at(tomorrow)
 print(' will it rain?:', x)
+fcRain = print(' will it rain?:', x)
 
 # search Current weather
 observation = owm.weather_at_place('Utrecht,NL')
@@ -37,14 +38,15 @@ print (' Vandaag is het weer:','\n',
        )
 
 # Forecast Section
-fc = owm.three_hours_forecast('Utrecht,nl')
-f = fc.get_forecast()
-f.get_reception_time('iso')
-fc.when_ends()
-lst = f.get_weathers()
-print('voorspelling van om de 3 uur')
-for weather in lst:
-    print('\n', weather.get_reference_time('iso'),weather.get_detailed_status())
+def forecastFunction():
+    fc = owm.three_hours_forecast('Utrecht,nl')
+    f = fc.get_forecast()
+    f.get_reception_time('iso')
+    fc.when_ends()
+    lst = f.get_weathers()
+    print('voorspelling van om de 3 uur')
+    for weather in lst:
+        print('\n', weather.get_reference_time('iso'),weather.get_detailed_status())
 
 
 # Will it be sunny tomorrow at this time in Utrecht ?
@@ -68,3 +70,29 @@ for weather in lst:
 # print("The wind speed", w.get_wind(),'\n',
 #       "De hudige vochtigheid is:", w.get_humidity(), "\n"
 #       "De temperature  is:", w.get_temperature('celsius'))
+
+#######################
+# Weather station GUI #
+
+class Application(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.pack()
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.hi_there = tk.Button(self)
+        self.hi_there["text"] = "Forecast van 3 uur"
+        self.hi_there["command"] = forecastFunction
+        self.hi_there.pack(side="top")
+
+        self.quit = tk.Button(self, text="QUIT", fg="red",
+                              command=root.destroy)
+        self.quit.pack(side="bottom")
+
+    def say_hi(self):
+        print(forecastFunction())
+
+root = tk.Tk()
+app = Application(master=root)
+app.mainloop()
