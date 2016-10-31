@@ -63,3 +63,7 @@ Screen hanging on stations:
         - Local:
             - Read from Twitter
             - Show x tweets on screen
+
+#Weather Application
+- get weather info from weather site Openweathermap
+    -Trying to find a good way to display the weather.
