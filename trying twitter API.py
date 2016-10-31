@@ -13,7 +13,7 @@ access_token_secret = 'OXm1d9oAqSuO4FEjqZR4kwOy4gJITJEWGxCsM5K6vIw1o'
 
 oauth = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret )
 
-# Requesting tweets from specific user
+# Requesting tweets from specific user: !! https://twitter.com/MarijnBecking
 r = oauth.request('statuses/user_timeline', {'count':2,'screen_name':'MarijnBecking'})
 for item in r.get_iterator():
     if 'text' in item:
