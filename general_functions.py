@@ -12,27 +12,24 @@ def csv_read(file):
 # Combining the unique sub-lists from both lists in a new list
 # returning the combined list & total number of rows in the newlist
 ####
+
 def combinelists(oldlst, newlst):
     combined = []
     combinecounter = 0
-    for each in oldlst:
-        combined.append(each)
-        combinecounter +=1
-    for each in newlst:
-        if each not in oldlst:
-            combined.append(each)
-            combinecounter += 1
+    for eachpending in oldlst:
+        combined.append(eachpending)
+    if newlst not in oldlst:
+        combined.append(newlst)
     return combined, combinecounter
 
 ###
 # Reading each csv file, utilize combinelists to retrieve an combined list
 ##
-def checkdifferences(oldfile, newfile):
-    from general_functions import csv_read, csv_write
+def checkdifferences(oldfile, newcontent):
+    from general_functions import csv_read
     currentcontent = csv_read('{}.csv'.format(oldfile))
-    pendingcontent = csv_read('{}.csv'.format(newfile))
-    combined, combinecounter = combinelists(currentcontent, pendingcontent)
-    return combined,combinecounter
+    combined, combinecounter = combinelists(currentcontent, newcontent)
+    return combined, combinecounter
 
 ######
 # Write every list into a row in the csv file.
@@ -45,13 +42,18 @@ def checkdifferences(oldfile, newfile):
 # csv_write('ReadyForAck', 'ReadyForAck', 'clients')
 ####
 
-def csv_write(file, oldfile, newfile):
+def csv_writelist(file, oldfile, newlst):
     import csv
-    writelist, num = checkdifferences(oldfile, newfile)
+    writelist = checkdifferences(oldfile, newlst)
     with open('{}.csv'.format(file), 'w', newline='') as csvwrite:
         writer = csv.writer(csvwrite, delimiter = ';')
         for eachlst in writelist:
-            writer.writerow(eachlst)
+            try:
+                for each in eachlst:
+                    writer.writerow(each)
+            except:
+                if TypeError:
+                    continue
     csvwrite.close()
 # put info_to_file into this format: [example1,example2,example3,]
 

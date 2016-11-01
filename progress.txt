@@ -19,17 +19,17 @@
 #   And notify the admin of this error.
 #####
 functions:
-twitter uploadtweet
-twitter downloadtweet
+80% twitter uploadtweet
+80% twitter downloadtweet
 
 clientside
 - GUI for input
     - functions
-        - main #Running the program
-        - input name #input first&last name
-        - input message #input message
-        - date/time stamp # creating a date/time stamp for the file
-        - Location of the input
+        - 80% main #Running the program
+        - 100% input name #input first&last name
+        - 100% input message #input message
+        - 100% date/time stamp # creating a date/time stamp for the file
+        - 0% Location of the input <-- has to be hashtag
         - Send for check #Write to the file
         - Popup -> show thankyou-message # Print something along the lines of "Thank you for your feedback!"
 

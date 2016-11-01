@@ -10,8 +10,7 @@
 ######
 # Asking user input
 ####
-def userinput():
-    global fname, lname, text, date
+def userinput(station):
     from general_functions import inputquestion
     # error = 0
     # while error == 0:
@@ -25,8 +24,11 @@ def userinput():
             print('Text is too long')
         # Error system needed
         date = definedate()
+        userinputlst = [fname, text, date, station]
+        return userinputlst
     except TypeError:
         print('Something has gone wrong, please try again')
+
 
 
 
@@ -39,25 +41,21 @@ def definedate():
 def send():
     print('Send')
 
-def inputwritecsv(fname, text, date):
-    import csv
-    with open('clients.csv', 'w', newline='') as csvfile:
-        reader = csv.reader(csvfile, delimiter=';')
-        writer = csv.writer(csvfile, delimiter=';')
-        writer.writerow(('firstname', 'text', 'date'))
-        line1 = (fname, text, date)
-        writer.writerow(line1)
-    print("Write succesfull!")
-    csvfile.close()
-
+######
+# client menu
+# loops
+# asks for user input
+# combine the userinput into the client list from csv
+# writes clientlist to csv
+# print DONE
+####
 def clientmenu():
-    global clientcounter
-    clientcounter = 0
+    import general_functions
+    station = 'Utrecht'
     clientmenuloop = 0
     while clientmenuloop == 0:
-        userinput()
-        inputwritecsv(fname, text, date)
-        clientcounter +=1
+        newlst = userinput(station)
+        general_functions.csv_writelist('clients', 'clients', newlst)
+        print('Done!')
 
-
-# clientmenu()
+clientmenu()
