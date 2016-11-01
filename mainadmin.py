@@ -1,6 +1,22 @@
 from authenticator import oauth
 from general_functions import csv_read, csv_writelist
 
+def updatelist():
+    from general_functions import csv_read, csv_writelist
+    clients = csv_read('clients.csv')
+    for eachclient in clients:
+        print(eachclient)
+        csv_writelist('ReadyForAck', 'ReadyForAck', eachclient)
+    pending = csv_read('ReadyForAck.csv')
+    return pending
+
+def showtweetonscreen():
+    loop = 1
+    while loop == 1:
+        Tweets = updatelist()
+        for eachtweet in Tweets: #eachtweet 0 = naam, 1 is bericht, 2 is datum, 3 is tijd
+            print(eachtweet[0], eachtweet[1], eachtweet[2], eachtweet[3])
+        loop = 0
 
 def adminmenu(file_to_send):
     file_to_accept = csv_read(file_to_send)

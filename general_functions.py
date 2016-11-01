@@ -71,6 +71,7 @@ def create_csv_station(station_name):
     file = open(station_name+'.csv', 'w+')
     file.close()
 
+# if the station is in the dictionary -> give back the stationabbreviation
 def stationabbreviation(station):
     stations = {'Utrecht': 'Ut',
                 'Amsterdam Centraal': 'asd'}
