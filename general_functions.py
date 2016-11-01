@@ -70,3 +70,9 @@ def create_csv_station(station_name):
     import csv
     file = open(station_name+'.csv', 'w+')
     file.close()
+
+def stationabbreviation(station):
+    stations = {'Utrecht': 'Ut',
+                'Amsterdam Centraal': 'asd'}
+    if station in stations:
+        return stations[station]
