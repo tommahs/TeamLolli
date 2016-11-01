@@ -44,7 +44,7 @@ def checkdifferences():
     admincontent = csv_read('ReadyForAck.csv')
     for each in clientcontent:
         if each not in admincontent:
-            csv_write(ReadyForAck.csv)
+            csv_write('ReadyForAck.csv')
 
 
 
