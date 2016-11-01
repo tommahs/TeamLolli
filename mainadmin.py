@@ -11,7 +11,7 @@ def adminrequest(file_to_send):
             station = input('Input station where was message posted - ')
             # counter += 1
             if admin_answer == 'Accept':
-                 r = oauth.request('statuses/update', {'status':filecsv.csv + ' #' + station}) # content_csv, here goes file
+                 r = oauth.request('statuses/update', {'status': filecsv.csv}) # content_csv, here goes file
                  if r.status_code == 200:
                      print('Succesfully sent message to twitterAPI')
                      counter += 1

@@ -63,3 +63,8 @@ def csv_write(file, oldfile, newfile):
 def inputquestion(comment):
     Input = input("{} : ".format(comment))
     return Input
+
+def create_csv_station(station_name):
+    import csv
+    file = open(station_name+'.csv', 'w+')
+    file.close()
