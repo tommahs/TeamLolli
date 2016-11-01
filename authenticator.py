@@ -1,5 +1,6 @@
 from TwitterAPI import TwitterAPI
 
+
 # Variables that contains the user credentials to access Twitter API
 consumer_key = '4y80L7AkxgHOUWgmxCmtmsa5H'
 consumer_secret = 'vJqX4rfOzI0xUviCzTZvacVmAjRGINdSFQlrmFuHydWdAHj29w'
