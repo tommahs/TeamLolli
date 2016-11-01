@@ -35,30 +35,31 @@ clientside
 
 adminside
 - GUI
-    - functions:
-        - main # Running the program
-        - input name + passcode # name & passcode, encrypted in different file
-        - open file
-        - show tweet on screen:
-            - Reject message#:
-                - popup -> Continue? # Are you sure?
-                    - Yes:
-                        - Add comment
-                        - Write to rejected file
-                        - Delete line from file
-                    -No:
-                        - terug naar show tweet
-            - Accept message#:
-                - popup -> Continue? # Are you sure?
-                    - Yes:
-                        - Write to the accept file
-                        - Tweet message(Firstname, datetime + message)
-                        - Popup -> Posted!
-        - timer is verlopen:
-            - send forecast as tweet
-        - tweet weathercheck every %timeframe%
+    - functions:                                                                - needs testing!
+        - main # Running the program                                            - done
+        - input name + passcode # name & passcode, encrypted in different file  - not started
+        - open file                                                             - done
+        - show tweet on screen:                                                 - testing fase, not ready for GUI
+            - Reject message#:                                                  -
+                - popup -> Continue? # Are you sure?                            - testing fase, not ready for GUI
+                    - Yes:                                                      -
+                        - Add comment                                           - not started
+                        - Write to rejected file                                - not yet finished
+                        - Delete line from file                                 - not yet finished
+                    -No:                                                        -
+                        - terug naar show tweet                                 - testing fase, not ready for GUI
+            - Accept message#:                                                  -
+                - popup -> Continue? # Are you sure?                            - testing fase, not ready for GUI
+                    - Yes:                                                      -
+                        - Write to the accept file                              - not yet finished
+                        - Tweet message(Firstname, datetime + message)          - done
+                        - Popup -> Posted!                                      - testing fase, not ready for GUI
+        - timer is verlopen:                                                    - not started
+            - send forecast as tweet                                            - not started
+        - tweet weathercheck every %timeframe%                                  -
         # Extra:
         - Show statistics -> how many tweets a week/day/month and which area uses the tweet post the most.
+
 Screen hanging on stations:
 - GUI
     - Functions:

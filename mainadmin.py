@@ -10,6 +10,10 @@ def updatelist():
     return pending
 
 def adminmenu():
+    station = 'stationtest.csv'
+    accepted = 'accepted.csv'
+    station_old = 'stationtest_old.csv'
+    accepted_old = 'accepted_old.csv'
     counter = 0
     while counter == 0:
         try:
@@ -21,8 +25,8 @@ def adminmenu():
                 # station = input('Input station where was message posted - ')
                 # counter += 1
                 if admin_answer == 'Accept' and confirmation == 'Yes':
-                     csv_writelist(acceptedfile, oldfile, newlst)            # WRITING TO ACCEPTED FILE
-                     csv_writelist(station, oldfile, newlst)                 # REWRITING STATION FILE TO REMOVE MESSAGE
+                     csv_writelist(accepted, accepted_old, newlst)     # WRITING TO ACCEPTED FILE
+                     csv_writelist(station, station_old, newlst)      # REWRITING STATION FILE TO REMOVE MESSAGE
                      r = oauth.request('statuses/update', {'status': '!!!'}) # TWEETING CONTENT OF MESSAGE
                      if r.status_code == 200:
                          print('Succesfully sent message to twitterAPI')     # CONFIRMATION FOR ADMIN
@@ -35,7 +39,7 @@ def adminmenu():
                     continue
                 elif admin_answer == 'Decline' and confirmation == 'Yes':
                     try:
-                        csv_writelist(station, oldfile, newlst)              # REWRITING REJECTED FILE TO ADD MESSAGE
+                        csv_writelist(station, station_old, newlst)              # REWRITING REJECTED FILE TO ADD MESSAGE
                         print('Written data to log file!')
                         continue
                     except:
