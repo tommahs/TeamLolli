@@ -6,7 +6,7 @@
 ###
 
 # Twitter max characters = 140
-#
+
 ######
 # Asking user input
 ####
