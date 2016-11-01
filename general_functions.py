@@ -1,7 +1,7 @@
 def csv_read(file):
     import csv
     file_content = []
-    with open(file, 'r', newline='') as csvread:
+    with open((file), 'r', newline='') as csvread:
         reader = csv.reader(csvread, delimiter = ';')
         for row in reader:
             file_content.append(row)
