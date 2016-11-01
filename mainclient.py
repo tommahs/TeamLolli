@@ -57,7 +57,6 @@ def clientmenu():
     station = general_functions.stationabbreviation(station)
     while clientmenuloop == 0:
         newlst = userinput(station)
-        general_functions.csv_writelist('clients', 'clients', newlst)
+        general_functions.csv_writelist('clients', 'clients', newlst, 1)
         send()
 clientmenu()
-
