@@ -54,8 +54,8 @@ adminside
                         - Write to the accept file
                         - Tweet message(Firstname, datetime + message)
                         - Popup -> Posted!
-
-        if no tweet accepted after %timeframe%:
+        - timer is verlopen:
+            - send forecast as tweet
         - tweet weathercheck every %timeframe%
         # Extra:
         - Show statistics -> how many tweets a week/day/month and which area uses the tweet post the most.
