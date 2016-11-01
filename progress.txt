@@ -29,9 +29,9 @@ clientside
         - 100% input name #input first&last name
         - 100% input message #input message
         - 100% date/time stamp # creating a date/time stamp for the file
-        - 0% Location of the input <-- has to be hashtag
-        - Send for check #Write to the file
-        - Popup -> show thankyou-message # Print something along the lines of "Thank you for your feedback!"
+        - 100% Location of the input <-- has to be hashtag
+        - 100% Send for check #Write to the file
+        - 0% Popup -> show thankyou-message # Print something along the lines of "Thank you for your feedback!"
 
 adminside
 - GUI
@@ -39,21 +39,26 @@ adminside
         - main # Running the program
         - input name + passcode # name & passcode, encrypted in different file
         - open file
-        - Sort available messages # Sort on date/time / name / stations
-        - Give number to available messages # Easier to select messages
-        - Reject message#:
-            - popup -> Continue? # Are you sure?
-            - Add comment
-            - Write to rejected file
-        - Accept message#:
-            - popup -> Continue? # Are you sure?
-            - Write to the accept file
-            - Tweet message(Firstname, datetime + message)
+        - show tweet on screen:
+            - Reject message#:
+                - popup -> Continue? # Are you sure?
+                    - Yes:
+                        - Add comment
+                        - Write to rejected file
+                        - Delete line from file
+                    -No:
+                        - terug naar show tweet
+            - Accept message#:
+                - popup -> Continue? # Are you sure?
+                    - Yes:
+                        - Write to the accept file
+                        - Tweet message(Firstname, datetime + message)
+                        - Popup -> Posted!
+
         if no tweet accepted after %timeframe%:
         - tweet weathercheck every %timeframe%
         # Extra:
-        - show statistics -> how many tweets a week/day/month and which area uses the tweet post the most.
-
+        - Show statistics -> how many tweets a week/day/month and which area uses the tweet post the most.
 Screen hanging on stations:
 - GUI
     - Functions:
