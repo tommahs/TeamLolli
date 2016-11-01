@@ -1,4 +1,4 @@
-import pyowm, tkinter as tk
+import pyowm, tkinter
 
 owm = pyowm.OWM('1060b54135410b3cf1bd80a73b8ac92a')  # You MUST provide a valid API key
 owm_nl = pyowm.OWM(language='nl') # Nederlandse taal
@@ -13,8 +13,8 @@ forecast = owm.daily_forecast('Utrecht,nl',limit=5)
 tomorrow = pyowm.timeutils.tomorrow()
 forecast.will_be_rainy_at(tomorrow)
 x = forecast.will_be_rainy_at(tomorrow)
-print(' will it rain?:', x)
-fcRain = print(' will it rain?:', x)
+# print(' will it rain?:', x)
+# fcRain = print(' will it rain?:', x)
 
 # search Current weather
 observation = owm.weather_at_place('Utrecht,NL')
@@ -29,13 +29,13 @@ w.get_rain()                                        # get volume regen
 w.get_detailed_status()                             # Get detailed weather status
 
 # The Printing Press
-print (' Vandaag is het weer:','\n',
-        'Momentele status:', w.get_detailed_status(),'\n',
-       'Momentele temperatuur:', w.get_temperature(unit='celsius'),'\n',
-       'Hoeveel wolken aanwezig:', w.get_clouds(),'%','\n',
-       'Kans op regen:', w.get_rain(),'%', '\n',
-       "Windkracht:", w.get_wind,'\n',
-       )
+# print (' Vandaag is het weer:','\n',
+#         'Momentele status:', w.get_detailed_status(),'\n',
+#        'Momentele temperatuur:', w.get_temperature(unit='celsius'),'\n',
+#        'Hoeveel wolken aanwezig:', w.get_clouds(),'%','\n',
+#        'Kans op regen:', w.get_rain(),'%', '\n',
+#        "Windkracht:", w.get_wind,'\n',
+#        )
 
 # Forecast Section
 def forecastFunction():
@@ -74,25 +74,24 @@ def forecastFunction():
 #######################
 # Weather station GUI #
 
-class Application(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.pack()
-        self.create_widgets()
+# Create a window
+window = tkinter.Tk()
+# title  of the window
+window.title("WeatherStation")
 
-    def create_widgets(self):
-        self.hi_there = tk.Button(self)
-        self.hi_there["text"] = "Forecast van 3 uur"
-        self.hi_there["command"] = forecastFunction
-        self.hi_there.pack(side="top")
+# Create a label called "lbl"  of text
+lbl = tkinter.Label(window, text="Het weerstation")
 
-        self.quit = tk.Button(self, text="QUIT", fg="red",
-                              command=root.destroy)
-        self.quit.pack(side="bottom")
 
-    def say_hi(self):
-        print(forecastFunction())
+# So the buttons are real
+button = tkinter.Button(window, text='Forecast', command=forecastFunction())
 
-root = tk.Tk()
-app = Application(master=root)
-app.mainloop()
+????????
+# Pack adder of the widgets into the window
+lbl.pack()
+button.pack()
+
+# Size of the window
+window.geometry('400x400')
+# Draw the window and start hte application
+window.mainloop()
