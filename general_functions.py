@@ -14,29 +14,42 @@ def csv_read(file):
 ####
 
 def combinelists(oldlst, newlst):
-    combined = []
-    combinecounter = 0
-    for eachpending in oldlst:
-        combined.append(eachpending)
+    combined = oldlst
     if newlst not in oldlst:
         combined.append(newlst)
-    return combined, combinecounter
+    # for new in newlst:
+    #     for each in oldlst:
+    #         combined.append(new)
+    #         if each is not new:
+    #             combined.append(each)
+    return combined
 
 ###
 # Reading each csv file, utilize combinelists to retrieve an combined list
 ##
 def checkdifferences(oldfile, changelist, num):
-    from general_functions import csv_read
     if num == 1: #combining the unique values of each list into 1 list
         newcontent = changelist
-        currentcontent = csv_read('{}.csv'.format(oldfile))
-        combined, combinecounter = combinelists(currentcontent, newcontent)
-        return combined, combinecounter
-    if num == 2: # removing the doubles from each list
-        currentcontent = csv_read('{}.csv'.format(oldfile))  # ReadyforAck
-        newcontent = csv_read('{}.csv'.format(changelist))  # Logfile
-        newlist = dividelists(currentcontent, newcontent)
-        return newlist
+        currentcontent = csv_read('{}.csv'.format(oldfile)) # ReadyForAck
+        print('newcontent:', newcontent)
+        print('currentcontent : ', currentcontent)
+        combined = combinelists(currentcontent, newcontent)
+        print('combined', combined)
+        return combined
+    if num == 2:
+        currentcontent = csv_read('{}.csv'.format(changelist)) #clientlist
+        combined = []
+        for each in currentcontent:
+            for elk in each:
+                combined + each
+                print(elk)
+        newlst = combinelists(currentcontent, combined)
+        return newlst
+    # if num == 2: # removing the doubles from each list
+    #     currentcontent = csv_read('{}.csv'.format(oldfile))  # ReadyForAck
+    #     newcontent = csv_read('{}.csv'.format(changelist))  # Logfile
+    #     newlist = dividelists(currentcontent, newcontent)
+    #     return newlist
 
 def dividelists(oldlst, logfile):
     for each in oldlst:
@@ -54,7 +67,9 @@ def dividelists(oldlst, logfile):
 # num = Method of use, 1 = combine, 2 = remove
 # extension .csv is automatically inside the functions.
 # Usage:
-# csv_write('ReadyForAck', 'ReadyForAck', 'clients')
+#
+# csv_writelist('ReadyForAck', 'ReadyForAck', 'clients', 1)
+# csv_writelist('ReadyForAck','ReadyForAck', 'logfile', 2)
 ####
 
 def csv_writelist(file, oldfile, chlst, num):
@@ -63,19 +78,28 @@ def csv_writelist(file, oldfile, chlst, num):
     with open('{}.csv'.format(file), 'w', newline='') as csvwrite:
         writer = csv.writer(csvwrite, delimiter = ';')
         if num == 1:
-            for eachlst in writelist:
-                try:
-                    for each in eachlst:
-                        writer.writerow(each)
-                except:
-                    if TypeError:
-                        continue
+            try:
+                for eachrow in writelist:
+                    writer.writerow(eachrow)
+            except:
+                if TypeError:
+                    print('Typeerror')
         if num == 2:
-            for each in writelist:
-                writer.writerow(each)
+            try:
+                for eachrow in writelist:
+                    writer.writerow(eachrow)
+            except:
+                if TypeError:
+                    print('Typeerror')
+
+        if num == 3:
+            try:
+                writer.writerow(writelist)
+            except:
+                if TypeError:
+                    print('Typeerror')
     csvwrite.close()
 # put info_to_file into this format: [example1,example2,example3,]
-
 
 
 ######
@@ -97,7 +121,9 @@ def stationabbreviation(station):
     if station in stations:
         return stations[station]
 
+# test voor schrijven van input naar client:
+# csv_writelist('clients', 'clients', newlst, 1)
+# test voor ReadyforAck bijvullen met missende lijsten
+csv_writelist('ReadyForAck', 'ReadyForAck', 'clients', 2)
+# csv_writelist('ReadyForAck','ReadyForAck', 'logfile', 2)
 
-
-#csv_writelist('ReadyForAck', 'ReadyForAck', 'clients', 1)
-csv_writelist('ReadyForAck','ReadyForAck', 'logfile', 2)

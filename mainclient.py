@@ -46,13 +46,14 @@ def send():
 # client menu
 # loops
 # asks for user input
+# Defines current stations abbriviation
 # combine the userinput into the client list from csv
 # writes clientlist to csv
 # print DONE
 ####
 def clientmenu():
     import general_functions
-    station = 'Utrecht'
+    station = 'Utrecht' #input
     clientmenuloop = 0
     station = general_functions.stationabbreviation(station)
     while clientmenuloop == 0:
@@ -60,3 +61,6 @@ def clientmenu():
         general_functions.csv_writelist('clients', 'clients', newlst, 1)
         send()
 clientmenu()
+
+import general_functions
+#general_functions.csv_writelist('ReadyForAck', 'ReadyForAck', 'clients', 1)
