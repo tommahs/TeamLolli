@@ -31,8 +31,6 @@ def userinput(station):
         print('Something has gone wrong, please try again')
 
 
-
-
 def definedate():
     from datetime import datetime
     date = datetime.now().strftime("20%y-%m-%d %H:%M")
@@ -60,7 +58,21 @@ def clientmenu():
         newlst = userinput(station)
         general_functions.csv_writelist('clients', 'clients', newlst, 1)
         send()
-clientmenu()
+        clientmenuloop = 1
+# clientmenu()
 
-import general_functions
-#general_functions.csv_writelist('ReadyForAck', 'ReadyForAck', 'clients', 1)
+
+# # Test to write input into clients.csv
+# from general_functions import *
+#
+# Test to add new tweet to clients.csv
+# mainclient.clientmenu()
+# Test to check to combine clients.csv and ReadyForAck.csv if clientsvalue not yet known voor
+# csv_writelist('ReadyForAck','ReadyForAck', 'clients', 2)
+# input()
+# Test to remove values in logfile from ReadyForAck
+# csv_writelist('ReadyForAck', 'ReadyForAck', 'logfile', 3)
+# input()
+
+
+# Logging
