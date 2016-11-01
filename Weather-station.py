@@ -29,24 +29,25 @@ w.get_rain()                                        # get volume regen
 w.get_detailed_status()                             # Get detailed weather status
 
 # The Printing Press
-# print (' Vandaag is het weer:','\n',
-#         'Momentele status:', w.get_detailed_status(),'\n',
-#        'Momentele temperatuur:', w.get_temperature(unit='celsius'),'\n',
-#        'Hoeveel wolken aanwezig:', w.get_clouds(),'%','\n',
-#        'Kans op regen:', w.get_rain(),'%', '\n',
-#        "Windkracht:", w.get_wind,'\n',
-#        )
+print (' Vandaag is het weer:','\n',
+        'Momentele status:', w.get_detailed_status(),'\n',
+       'Momentele temperatuur:', w.get_temperature(unit='celsius'),'\n',
+       'Hoeveel wolken aanwezig:', w.get_clouds(),'%','\n',
+       'Kans op regen:', w.get_rain(),'%', '\n',
+       "Windkracht:", w.get_wind,'\n',
+       )
+
 
 # Forecast Section
-def forecastFunction():
-    fc = owm.three_hours_forecast('Utrecht,nl')
-    f = fc.get_forecast()
-    f.get_reception_time('iso')
-    fc.when_ends()
-    lst = f.get_weathers()
-    print('voorspelling van om de 3 uur')
-    for weather in lst:
-        print('\n', weather.get_reference_time('iso'),weather.get_detailed_status())
+# def forecastFunction():
+#     fc = owm.three_hours_forecast('Utrecht,nl')
+#     f = fc.get_forecast()
+#     f.get_reception_time('iso')
+#     fc.when_ends()
+#     lst = f.get_weathers()
+#     print('voorspelling van om de 3 uur')
+#     for weather in lst:
+#         print('\n', weather.get_reference_time('iso'),weather.get_detailed_status())
 
 
 # Will it be sunny tomorrow at this time in Utrecht ?
@@ -75,23 +76,23 @@ def forecastFunction():
 # Weather station GUI #
 
 # Create a window
-window = tkinter.Tk()
-# title  of the window
-window.title("WeatherStation")
-
-# Create a label called "lbl"  of text
-lbl = tkinter.Label(window, text="Het weerstation")
-
-
-# So the buttons are real
-button = tkinter.Button(window, text='Forecast', command=forecastFunction())
-
-????????
-# Pack adder of the widgets into the window
-lbl.pack()
-button.pack()
-
-# Size of the window
-window.geometry('400x400')
-# Draw the window and start hte application
-window.mainloop()
+# window = tkinter.Tk()
+# # title  of the window
+# window.title("WeatherStation")
+#
+# # Create a label called "lbl"  of text
+# lbl = tkinter.Label(window, text="Het weerstation")
+#
+#
+# # So the buttons are real
+# button = tkinter.Button(window, text='Forecast', command=forecastFunction())
+#
+#
+# # Pack adder of the widgets into the window
+# lbl.pack()
+# button.pack()
+#
+# # Size of the window
+# window.geometry('400x400')
+# # Draw the window and start hte application
+# window.mainloop()
