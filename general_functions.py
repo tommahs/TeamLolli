@@ -37,29 +37,42 @@ def checkdifferences(oldfile, changelist, num):
         newcontent = csv_read('{}.csv'.format(changelist))  # Logfile
         newlist = dividelists(currentcontent, newcontent)
         return newlist
+
+def dividelists(oldlst, logfile):
+    for each in oldlst:
+        for log in logfile:
+            if each == log:
+                print('REMOVED', each[0], each[1], each[2], each[3])
+                oldlst.remove(each)
+    return oldlst
 ######
 # Write every list into a row in the csv file.
 # Input has become 'filename', 'filename', 'filename' without extensions
 # first filename serves as the csvwriter
 # second filename serves for reading the old file
-# third filename serves for reading the new file
+# third filename serves for reading the change file
+# num = Method of use, 1 = combine, 2 = remove
 # extension .csv is automatically inside the functions.
 # Usage:
 # csv_write('ReadyForAck', 'ReadyForAck', 'clients')
 ####
 
-def csv_writelist(file, oldfile, newlst, num):
+def csv_writelist(file, oldfile, chlst, num):
     import csv
-    writelist = checkdifferences(oldfile, newlst, num)
+    writelist = checkdifferences(oldfile, chlst, num)
     with open('{}.csv'.format(file), 'w', newline='') as csvwrite:
         writer = csv.writer(csvwrite, delimiter = ';')
-        for eachlst in writelist:
-            try:
-                for each in eachlst:
-                    writer.writerow(each)
-            except:
-                if TypeError:
-                    continue
+        if num == 1:
+            for eachlst in writelist:
+                try:
+                    for each in eachlst:
+                        writer.writerow(each)
+                except:
+                    if TypeError:
+                        continue
+        if num == 2:
+            for each in writelist:
+                writer.writerow(each)
     csvwrite.close()
 # put info_to_file into this format: [example1,example2,example3,]
 
@@ -85,29 +98,6 @@ def stationabbreviation(station):
         return stations[station]
 
 
-def finishedtweets(oldfile, logfile):
-    from general_functions import csv_read
-    currentcontent = csv_read('{}.csv'.format(oldfile)) #ReadyforAck
-    print('curcontent', currentcontent)
-    toberemovedcontent = csv_read('{}.csv'.format(logfile)) # Logfile
-    newlist = dividelists(currentcontent, toberemovedcontent)
-    return newlist
-
-def dividelists(oldlst, logfile):
-    try:
-        print('oldlist,', oldlst)
-        for each in oldlst:
-                print('pak elk', each)
-                if each == logfile:
-                    print('REMOVED')
-                else:
-                    print('userless!')
-                    # input()
-
-    except:
-        if ValueError:
-            print('valueerror')
-    return oldlst
 
 #csv_writelist('ReadyForAck', 'ReadyForAck', 'clients', 1)
-# csv_writelist('ReadyForAck','ReadyForAck', 'logfile', 2)
+csv_writelist('ReadyForAck','ReadyForAck', 'logfile', 2)
