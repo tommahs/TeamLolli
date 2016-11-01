@@ -19,13 +19,14 @@ def userinput(station):
         if len(fname) > 10:
             print('Name is too long')
             # Error system needed
-        text = inputquestion('Tweet') #Check length, 120 char max
-        if len(text) > 120:
-            print('Text is too long')
-        # Error system needed
-        date = definedate()
-        userinputlst = [fname, text, date, station]
-        return userinputlst
+        else:
+            text = inputquestion('Tweet') #Check length, 120 char max
+            if len(text) > 120:
+                print('Text is too long')
+            # Error system needed
+            date = definedate()
+            userinputlst = [fname, text, date, station]
+            return userinputlst
     except TypeError:
         print('Something has gone wrong, please try again')
 
@@ -39,7 +40,7 @@ def definedate():
 
 
 def send():
-    print('Send')
+    input('Clicked on Send!')
 
 ######
 # client menu
@@ -53,9 +54,10 @@ def clientmenu():
     import general_functions
     station = 'Utrecht'
     clientmenuloop = 0
+    station = general_functions.stationabbreviation(station)
     while clientmenuloop == 0:
         newlst = userinput(station)
         general_functions.csv_writelist('clients', 'clients', newlst)
-        print('Done!')
-
+        send()
 clientmenu()
+
