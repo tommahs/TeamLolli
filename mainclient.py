@@ -58,8 +58,9 @@ def clientmenu():
         newlst = userinput(station)
         general_functions.csv_writelist('clients', 'clients', newlst, 1)
         send()
+        general_functions.popuptext('Thank you for giving us valuable feedback to work with!')
         clientmenuloop = 1
-# clientmenu()
+clientmenu()
 
 
 # # Test to write input into clients.csv

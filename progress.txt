@@ -22,54 +22,52 @@ functions:
 80% twitter uploadtweet
 80% twitter downloadtweet
 
-clientside
+clientside                                                                      - Clientside
 - GUI for input
     - functions
-        - 80% main #Running the program
-        - 100% input name #input first&last name
-        - 100% input message #input message
-        - 100% date/time stamp # creating a date/time stamp for the file
-        - 100% Location of the input <-- has to be hashtag
-        - 100% Send for check #Write to the file
-        - 0% Popup -> show thankyou-message # Print something along the lines of "Thank you for your feedback!"
-
+        - main #Running the program                                             - Needs GUI
+        - input name #input first&last name                                     - Done
+        - input message #input message                                          - Done
+        - date/time stamp # creating a date/time stamp for the file             - Done
+        - Location of the input <-- has to be hashtag                           - Done
+        - Send for check #Write to the file                                     - Done
+        - GUI                                                                   - Not started
+        - Popup -> show thankyou-message                                        - Needs gui, function is done
+    - Needs Errortesting
 adminside
-- GUI
-    - functions:                                                                - needs testing!
-        - main # Running the program                                            - done
-        - input name + passcode # name & passcode, encrypted in different file  - not started
-        - open file                                                             - done
-        - show tweet on screen:                                                 - testing fase, not ready for GUI
-            - Reject message#:                                                  -
-                - popup -> Continue? # Are you sure?                            - testing fase, not ready for GUI
-                    - Yes:                                                      -
+- GUI                                                                           - not yet finished
+- functions:                                                                    - needs testing!
+        - main # Running the program                                            - 83% done
+        - input name + passcode # name+passcode encrypted in different file     - not started (EXTRA)
+        - update the adminfile                                                  - done
+        - Open file                                                             - done
+        - Show tweet on screen:                                                 - Needs GUI before able to test
+            - Reject message#:                                                  - not yet finished -> can be tested using testscript #3
+                - popup -> Continue? # Are you sure?                            - not yet finished
+                    - Yes:                                                      - not yet finished
                         - Add comment                                           - not started
-                        - Write to rejected file                                - not yet finished
-                        - Delete line from file                                 - not yet finished
-                    -No:                                                        -
-                        - terug naar show tweet                                 - testing fase, not ready for GUI
-            - Accept message#:                                                  -
-                - popup -> Continue? # Are you sure?                            - testing fase, not ready for GUI
-                    - Yes:                                                      -
+                        - Write to rejected file                                - done
+                        - Delete line from file                                 - done
+                    -No:                                                        - not started
+                        - terug naar show tweet                                 - not started
+            - Accept message#:                                                  - not yet finished
+                - popup -> Continue? # Are you sure?                            - not yet started
+                    - Yes:                                                      - not yet finished
                         - Write to the accept file                              - not yet finished
-                        - Tweet message(Firstname, datetime + message)          - done
-                        - Popup -> Posted!                                      - testing fase, not ready for GUI
-        - timer is verlopen:                                                    - not started
-            - send forecast as tweet                                            - not started
-        - tweet weathercheck every %timeframe%                                  -
+                        - Get message (Firstname, datetime + message)           - done
+                        - Tweet message                                         - Needs to be implemented
+                        - Popup -> Posted!                                      - not yet finished
+
         # Extra:
-        - Show statistics -> how many tweets a week/day/month and which area uses the tweet post the most.
+        - Show statistics -> how many tweets a week/day/month, which # the most - not started
+                              -
 
 Screen hanging on stations:
 - GUI
     - Functions:
         - Country:
-            - Read from Twitter
-            - Show x tweets on screen
+            - Read from Twitter                                                 - done
+            - Show x tweets on screen                                           - not yet finished - needs gui
         - Local:
-            - Read from Twitter
-            - Show x tweets on screen
-
-#Weather Application
-- get weather info from weather site Openweathermap
-    -Trying to find a good way to display the weather.
+            - Read from Twitter                                                 - done
+            - Show x tweets on screen                                           - not yet finished - needs gui

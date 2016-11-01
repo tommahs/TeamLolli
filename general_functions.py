@@ -99,3 +99,5 @@ def stationabbreviation(station):
     if station in stations:
         return stations[station]
 
+def popuptext(text):
+    print(text)
