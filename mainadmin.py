@@ -2,7 +2,7 @@ from authenticator import oauth
 from general_functions import csv_read, csv_writelist
 
 
-def adminrequest(file_to_send):
+def adminmenu(file_to_send):
     file_to_accept = csv_read(file_to_send)
     print(file_to_accept)
     counter = 0
