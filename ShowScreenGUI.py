@@ -12,25 +12,33 @@ RWindow.geometry('300x480')
 ###################
 
 # Label naam en Test Bericht
-svar_bericht = StringVar(RWindow, value='kut')
-svar_naam = StringVar(RWindow, value='Berichten')
+svar_bericht = StringVar(RWindow, value='Het Bericht')
+svar_labelNaam = StringVar(RWindow, value='Title "Berichten"')
+svar_naam = StringVar(RWindow, value='Naam Persoon')
+
+Svar_BerichtEnNaam = svar_bericht and svar_naam
 
 # Functie om alles in te laden?
-def toont_weet(naam, bericht):
+def toont_weet(lblnaam, bericht, naam, berichtEnNaam):
     svar_bericht.set(bericht)
+    svar_labelNaam.set(lblnaam)
     svar_naam.set(naam)
 
-
+    Svar_BerichtEnNaam(berichtEnNaam)
 
 # Label Naam
-label_naam = Message(RWindow, textvariable=svar_naam, bg='#e6e6e6', borderwidth=4)
+label_naam = Message(RWindow, textvariable=svar_labelNaam, bg='#e6e6e6', borderwidth=4)
 label_naam.config(font=('times', 16), width=400)
 label_naam.grid(row=1, column=3, columnspan=4, sticky='n', ipadx='100', ipady='10')
 
+
+
 # Bericht 1
-label_message = Message(RWindow, textvariable = svar_bericht, bg='#e6e6e6')
+label_message = Message(RWindow, textvariable = Svar_BerichtEnNaam, bg='#e6e6e6')
+label_messageName = Message(RWindow, textvariable = svar_naam, bg='#e6e6e6')
 label_message.config(font=('times', 12), width=400)
 label_message.grid(row=2, column=3, columnspan=6,  sticky='ew', ipadx='100', ipady='10')
+
 
 # Bericht 2
 label_message2 = Message(RWindow, textvariable = svar_bericht, bg='#e6e6e6')
@@ -72,4 +80,6 @@ label_message9 = Message(RWindow, textvariable = svar_bericht, bg='#e6e6e6')
 label_message9.config(font=('times', 12), width=400)
 label_message9.grid(row=10, column=3, columnspan=6,  sticky='ew', ipadx='100', ipady='10')
 
+
+# Einde
 mainloop()
