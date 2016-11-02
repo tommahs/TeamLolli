@@ -1,16 +1,28 @@
-from tkinter import *
+import tkinter
 
-root = Tk()
-root.title('NS Bericht')
-
-
-#Background story
-background_image = PhotoImage(file="NS_logo.png")
-background_label = Label(root, image=background_image)
-background_label.grid(rowspan=30, columnspan=12)
+# Starting
+showWindow = tkinter.Tk()
 
 
-#bericht
-label_message = Message(root, textvariable = svar_bericht, bg='#e6e6e6')
-label_message.grid(row=2, column=3, columnspan=6,  sticky='ew')
-label_message.config(font=('times', 18), width=400)
+# Title window
+showWindow.title("NS Bericht scherm")
+
+# Icon van window
+# showWindow.wm_iconbitmap('')
+
+
+# Label en Texten "body"
+lbl = tkinter.Label(showWindow, text='Bericht scherm')
+lbl.pack()
+
+mb = tkinter.Message(showWindow, text='testtest')
+mb.pack()
+
+
+
+# De grote van de window bepalen
+showWindow.geometry('300x500')
+
+
+# Ending
+showWindow.mainloop()
