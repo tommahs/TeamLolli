@@ -14,12 +14,16 @@ RWindow.geometry('300x480')
 
 
 # Label naam en Test Bericht
-svar_bericht = StringVar(RWindow, value='kut')
-svar_naam = StringVar(RWindow, value='Berichten')
+svar_bericht = StringVar(RWindow, value='Het Bericht')
+svar_labelNaam = StringVar(RWindow, value='Title "Berichten"')
+svar_naam = StringVar(RWindow, value='Naam Persoon')
+
+Svar_BerichtEnNaam = svar_bericht and svar_naam
 
 # Functie om alles in te laden?             ## bericht == list of messages
 def toont_weet(naam, bericht):
     svar_bericht.set(bericht)
+    svar_labelNaam.set(lblnaam)
     svar_naam.set(naam)
 
 
@@ -34,7 +38,7 @@ while True:
             lst.append(message)
             counter += 1
     break
-    
+
 while True:
     if len(lst) < 10:
         lst.append(' ')
