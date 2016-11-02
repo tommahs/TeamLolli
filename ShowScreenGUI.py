@@ -3,6 +3,9 @@ from tkinter import *
 # Starting
 
 master = Tk()
+master.geometry('300x500')
+
+
 svar_bericht = StringVar(master, value='kut')
 svar_naam = StringVar(master, value='Berichten')
 
