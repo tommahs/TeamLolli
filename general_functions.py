@@ -99,5 +99,44 @@ def stationabbreviation(station):
     if station in stations:
         return stations[station]
 
+
+#####
+# Need gui to connect the following functions with
+##
 def popuptext(text):
     print(text)
+
+
+def accepted(eachtweet):
+    import general_functions
+    try:
+        ##
+        tweet = '{} {}: {} #{}'.format(eachtweet[2], eachtweet[0], eachtweet[1], eachtweet[3].upper())
+        print(tweet) ## input send to twitter function
+    except:
+        print('ietsgaatfout')
+def rejected(eachtweet):
+    import general_functions
+    try:
+        # write to logfile
+        # remove tweet from ReadyForAck
+        general_functions.csv_writelist('logfile', 'logfile', eachtweet, 1)
+        general_functions.csv_writelist('ReadyForAck', 'ReadyForAck', 'logfile', 3)
+        general_functions.popuptext('Rejected!')
+    except:
+        "ietsgaatfout"
+
+def openlogfile():
+    csvlog = csv_read('logfile.csv')
+    csvlog.reverse()
+    print('name:  message: date:')
+    num = 1
+    if len(csvlog) >=50:
+        maxnum = 50
+    else:
+        maxnum = len(csvlog)
+    while num <= maxnum:
+        for eachlst in csvlog:
+            print(eachlst[0], eachlst[1], eachlst[2], eachlst[3])
+            num +=1
+#openlogfile()
