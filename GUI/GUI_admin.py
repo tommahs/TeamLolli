@@ -11,6 +11,8 @@ def toont_weet(naam, bericht):
     svar_bericht.set(bericht)
     svar_naam.set(naam)
 
+#Funcite beoordeel zorgt voor een output van True of False, aan de hand daarvan if, else statement maken.
+
 def beoordeel(goedgekeurd):
     print(goedgekeurd)
 
