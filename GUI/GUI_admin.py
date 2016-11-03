@@ -3,7 +3,7 @@ from tkinter import *
 root = Tk()
 root.title('NS Approval App')
 
-svar_bericht = StringVar(root, value='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et ille ridens: Video, inquit, quid agas; Quare conare, quaeso.')
+svar_bericht = StringVar(root, value='voorbeeld string')
 svar_naam = StringVar(root, value='voorbeeld naam')
 
 
@@ -39,7 +39,7 @@ label_naam.config(font=('times', 20), width=400)
 label_naam.grid(row=1, column=3, columnspan=4, sticky='nw')
 
 label_message = Message(root, textvariable = svar_bericht, bg='#e6e6e6')
-label_message.grid(row=2, column=3, columnspan=6,  sticky='ew')
+label_message.grid(row=2, column=3, columnspan=5,  sticky='ew')
 label_message.config(font=('times', 18), width=400)
 
 
@@ -47,8 +47,8 @@ label_message.config(font=('times', 18), width=400)
 reject = lambda:beoordeel(False)
 accept = lambda:beoordeel(True)
 
-button_reject = Button(root, text='Reject', bg="red", command=reject)
-button_accept = Button(root, text='Accept', bg="Green", command=accept)
+button_reject = Button(root, text='Reject', bg="red", command=accept)
+button_accept = Button(root, text='accept', bg="Green", command=accept)
 
 
 button_reject.config(font=('times', 32))
