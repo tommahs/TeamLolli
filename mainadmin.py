@@ -16,8 +16,7 @@ def beoordeel(goedgekeurd, eachtweet, tweetnum):
     elif goedgekeurd is False:
         general_functions.rejected(eachtweet)
     elif goedgekeurd == 'exit':
-        global check
-        check.destroy
+        tweetAck.quit()
 
 
 def tweet(lst, tweetnum):
@@ -35,14 +34,22 @@ def svarmsg(tweet):
     return svarmsg
 
 
-def popupmsg(msg):
+def popupmsg():
     popup = Tk()
-    popup.wm_title("!")
-    label = Label(popup, text=msg)
-    label.pack(side="top", fill="x", pady=10)
-    B1 = Button(popup, text="Okay", command=popup.destroy)
-    B1.pack()
+    popup.wm_title('Continue?')
+    label = Label(popup, text='Do you wish to continue?')
+    # B1 = Button(popup, text="Okay", command=popup.destroy)
+    yes = True
+    no = False
+    Button2 = Button(popup, text="Yes", command=yes)
+    Button3 = Button(popup,text="No", command=no)
+    # B1.pack()
+    Button2.pack()
+    Button3.pack()
     popup.mainloop()
+    return
+
+
 
 def tweetAck(msg):
     tweetnum = 0
@@ -107,7 +114,7 @@ def tweetAck(msg):
             # print('Rejectbutton')
             button_accept = Button(check, text='accept', bg="Green", command=accept)
             # print('Accept button')
-            button_quit = Button(check, text="Cancel", bg='Red', command=check.destroy)
+            button_quit = Button(check, text="Cancel", bg='Red', command=check.quit)
             # print('Quit button')
             button_reject.config(font=('times', 32))
             button_reject.grid(row=11, column=1)
@@ -117,15 +124,28 @@ def tweetAck(msg):
             # print('Accept grid')
             button_quit.config(font=('times', 32))
             button_quit.grid(row=11, column=5)
-            # print('Quit grid')
+            print('Quit grid')
             tweetnum += 1
             check.mainloop()
-            print(tweetnum)
-            popupmsg('test')
+
         except:
             if IndexError:
                 loop = 1
             else:
                 print('test')
+        try:
+            print(tweetnum)
+            next = popupmsg()
+            if next is True:
+                break
+            else:
+                continue
+        except:
+            print("except")
 
-
+        finally:
+            if next is True:
+                pass
+            else:
+                loop = 1
+# tweetAck('Client')

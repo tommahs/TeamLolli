@@ -6,7 +6,6 @@ from tkinter.scrolledtext import ScrolledText
 
 def beoordeel(goedgekeurd):
     import mainadmin, mainclient
-    print(goedgekeurd)
     if goedgekeurd == 'quit':
         exit()
     elif goedgekeurd == 'Client':
@@ -37,4 +36,5 @@ button_quit = Button(root, text='Quit program', bg='Green', font=('times', 32), 
 button_client.grid(row=1, column=2)
 button_check.grid(row= 2, column=2)
 button_quit.grid(row=3, column=2)
+
 root.mainloop()
