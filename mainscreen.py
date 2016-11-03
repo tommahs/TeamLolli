@@ -18,7 +18,7 @@ def showmainscreen(amount_of_messages):
             continue
     return screenlist
 
-
+print(showmainscreen(3))
 # Function to search twitter and form information into the format for the screen inside the station
 # Made into a function for later use
 
