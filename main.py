@@ -11,10 +11,8 @@ def beoordeel(goedgekeurd):
         exit()
     elif goedgekeurd == 'Client':
         mainclient.clientmain('Client')
-    elif goedgekeurd == 'check':
-        mainadmin.tweetAck()
-
-
+    elif goedgekeurd == 'Check Tweet':
+        mainadmin.tweetAck('NS Approval App')
 
 root = Tk()
 root.title('NS Feedback Poster')
@@ -34,7 +32,7 @@ quit = lambda:beoordeel('quit')
 
 button_client = Button(root, text='client', bg="red", font=('times', 32), command=client)
 button_check = Button(root, text='checktweets', bg="Green",font=('times', 32), command=check)
-button_quit = Button(root, text='Quit program', bg='Green', font=('times', 32), command=quit)
+button_quit = Button(root, text='Quit program', bg='Green', font=('times', 32), command=exit)
 
 button_client.grid(row=1, column=2)
 button_check.grid(row= 2, column=2)
