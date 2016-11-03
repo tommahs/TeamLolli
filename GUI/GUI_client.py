@@ -2,9 +2,9 @@ from tkinter import *
 from tkinter.scrolledtext import ScrolledText
 
 root = Tk()
-root.title('NS Approval App')
+root.title('NS Reizigers mening')
 
-svar_bericht = StringVar(root, value='voorbeeld string')
+
 svar_naam = StringVar(root, value='voorbeeld naam')
 
 
@@ -12,10 +12,11 @@ def toont_weet(naam, bericht):
     svar_bericht.set(bericht)
     svar_naam.set(naam)
 
-#Funcite beoordeel zorgt voor een output van True of False, aan de hand daarvan if, else statement maken.
+#Functie beoordeel zorgt voor een output van True of False, aan de hand daarvan if, else statement maken.
+
 
 def beoordeel(goedgekeurd):
-    print(goedgekeurd)
+    print(entry_message.get(1.0,END))
 
 
 background_image = PhotoImage(file="NS_logo.png")
@@ -35,22 +36,23 @@ label_3 = Label(root, text='Bericht : ', bg='#FFCC18')
 label_3.config(font=('times', 24))
 label_3.grid(row=2, column=2, sticky='ne')
 
-label_naam = Entry(root, textvariable=svar_naam, bg='#e6e6e6', borderwidth=4)
-label_naam.config(font=('times', 20), width=40)
-label_naam.grid(row=1, column=3, columnspan=4, sticky='nw')
+entry_naam = Entry(root, textvariable=svar_naam, bg='#e6e6e6', borderwidth=4)
+entry_naam.config(font=('times', 20), width=40)
+entry_naam.grid(row=1, column=3, columnspan=4, sticky='nw')
 
-label_message = ScrolledText(root, width=40, height=4, bg='#e6e6e6')
-label_message.grid(row=2, column=3, columnspan=5,  sticky='ew')
-label_message.config(font=('times', 18))
-label_message.insert(INSERT,'')
+entry_message = ScrolledText(root, width=40, height=4, bg='#e6e6e6')
+entry_message.config(font=('times', 18))
+entry_message.grid( row=2, column=3, columnspan=6, sticky='ew')
+entry_message.insert(INSERT,'')
 
+svar_bericht = entry_message.get(1.0,END)
 
 
 reject = lambda:beoordeel(False)
 accept = lambda:beoordeel(True)
 
-button_reject = Button(root, text='Reject', bg="red", command=accept)
-button_accept = Button(root, text='accept', bg="Green", command=accept)
+button_reject = Button(root, text='Cancel', bg="red", command=reject)
+button_accept = Button(root, text='Verstuur', bg="Green", command=accept)
 
 
 button_reject.config(font=('times', 32))
