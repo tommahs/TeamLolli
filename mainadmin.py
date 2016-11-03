@@ -1,37 +1,89 @@
-from authenticator import oauth
-from general_functions import csv_read, csv_writelist
+from tkinter import *
+
 
 def updatelist():
     from general_functions import csv_read, csv_writelist
-    csv_writelist('ReadyForAck','ReadyForAck', 'clients', 2)
+    csv_writelist('ReadyForAck', 'ReadyForAck', 'clients', 2)
     pending = csv_read('ReadyForAck.csv')
     return pending
 
-def adminmenu():
+
+def beoordeel(goedgekeurd):
     import general_functions
-    station = 'stationtest.csv'
-    accepted = 'accepted.csv'
-    station_old = 'stationtest_old.csv'
-    accepted_old = 'accepted_old.csv'
-    counter = 0
-    while counter == 0:
-        Tweets = updatelist()
-        for eachtweet in Tweets:  # eachtweet 0 = naam, 1 is bericht, 2 is datum, 3 is stationafkorting
-            print(eachtweet)
-            admin_answer = input('Accept message? Accept/Decline, \nType refresh if no message printed : ')
-            if admin_answer == '0': # Accepted
-                try:
-                    ##
-                    tweet = '{} {}: {} #{}'.format(eachtweet[2], eachtweet[0], eachtweet[1], eachtweet[3].upper())
-                    print(tweet)
-                except:
-                    print('ietsgaatfout')
-            elif admin_answer == '1':    #(Rejected)
-                try:
-                    # write to logfile
-                    # remove tweet from ReadyForAck
-                    general_functions.csv_writelist('logfile', 'logfile', eachtweet, 1)
-                    general_functions.csv_writelist('ReadyForAck', 'ReadyForAck', 'logfile', 3)
-                except:
-                    "ietsgaatfout"
-adminmenu()
+    print(goedgekeurd)
+    if goedgekeurd is True:
+        general_functions.accepted(eachtweet)
+    elif goedgekeurd is False:
+        general_functions.rejected(eachtweet)
+
+def svarname(tweet):
+    svarname = tweet[0]
+    return svarname
+
+def svarmsg(tweet):
+    svarmsg = tweet[1]
+    return svarmsg
+
+
+root = Tk()
+root.title('NS Approval App')
+
+
+######
+# Background
+####
+background_image = PhotoImage(file="GUI/NS_logo.png")
+background_label = Label(root, image=background_image)
+background_label.grid(rowspan=30, columnspan=12)
+root.resizable(False, False)
+
+######
+# Titellabel
+####
+
+label_titel = Label(root, text='NS bericht approval', bg='#FFCC18')
+label_titel.config(font=('times', 24))
+label_titel.grid(row=0, columnspan=12, sticky='n')
+
+######
+# Name
+####
+label_2 = Label(root, text='Naam : ', bg='#FFCC18')
+label_2.config(font=('times', 24))
+label_2.grid(row=1, column=2, sticky='ne')
+######
+# Message:
+####
+label_3 = Label(root, text='Bericht : ', bg='#FFCC18')
+label_3.config(font=('times', 24))
+label_3.grid(row=2, column=2, sticky='ne')
+
+accept = lambda:beoordeel(True)
+reject = lambda:beoordeel(False)
+
+tweetnum = 0
+Tweets = updatelist()
+tweetslength = len(Tweets)
+####
+    svar_naam = StringVar(root, value=eachtweet[0])
+    svar_bericht = StringVar(root, value=eachtweet[1])
+
+    button_reject = Button(root, text='Reject', bg="red", command=reject)
+    button_accept = Button(root, text='accept', bg="Green", command=accept)
+
+    button_reject.config(font=('times', 32))
+    button_reject.grid(row=11, column=1)
+
+    button_accept.config(font=('times', 32))
+    button_accept.grid(row=11, column=10)
+
+    label_naam = Message(root, textvariable=svar_naam, bg='#e6e6e6', borderwidth=4)
+    label_naam.config(font=('times', 20), width=400)
+    label_naam.grid(row=1, column=3, columnspan=4, sticky='nw')
+
+    label_message = Message(root, textvariable=svar_bericht, bg='#e6e6e6')
+    label_message.grid(row=2, column=3, columnspan=5,  sticky='ew')
+    label_message.config(font=('times', 18), width=400)
+    tweetnum += 1
+    print(tweetnum)
+root.mainloop()

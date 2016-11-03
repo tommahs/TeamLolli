@@ -34,7 +34,6 @@ def checkdifferences(oldfile, changelist, num):
         for each in currentcontent:
             for elk in each:
                 combined + each
-                print(elk)
         newlst = combinelists(currentcontent, combined)
         return newlst
     if num == 3: # removing the doubles from each list
@@ -115,6 +114,7 @@ def accepted(eachtweet):
         print(tweet) ## input send to twitter function
     except:
         print('ietsgaatfout')
+
 def rejected(eachtweet):
     import general_functions
     try:
