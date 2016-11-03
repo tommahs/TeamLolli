@@ -45,7 +45,7 @@ label_message.config(font=('times', 18), width=400)
 reject = lambda:beoordeel(False)
 accept = lambda:beoordeel(True)
 
-button_reject = Button(root, text='Reject', bg="red", command=reject)
+button_reject = Button(root, text='Reject', bg="red", command=accept)
 button_accept = Button(root, text='accept', bg="Green", command=accept)
 
 

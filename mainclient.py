@@ -10,6 +10,7 @@
 ######
 # Asking user input
 ####
+
 def userinput(station):
     from general_functions import inputquestion
     try:
@@ -51,6 +52,7 @@ def send(newlst):
 # writes clientlist to csv
 # print DONE
 ####
+
 def clientmenu():
     import general_functions
     station = 'Utrecht' #input
