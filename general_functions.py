@@ -110,7 +110,7 @@ def accepted(eachtweet):
     import general_functions
     try:
         ##
-        tweet = '{} {}: {} #{}'.format(eachtweet[2], eachtweet[0], eachtweet[1], eachtweet[3].upper())
+        tweet = '{}: {} #{}'.format(eachtweet[0], eachtweet[1], eachtweet[3].upper())
         print(tweet) ## input send to twitter function
     except:
         print('ietsgaatfout')
