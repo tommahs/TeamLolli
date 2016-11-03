@@ -3,7 +3,7 @@ from mainscreen import showmainscreen
 
 # Starting Root-Window
 RWindow = Tk()
-RWindow.geometry('500x700')
+RWindow.geometry('400x700')
 
 ###################
 
