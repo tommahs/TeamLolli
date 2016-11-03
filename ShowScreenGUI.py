@@ -8,7 +8,7 @@ import sched, time
 
 # Starting Root-Window
 RWindow = Tk()
-RWindow.geometry('500x700')
+RWindow.geometry('550x800')
 
 ###################
 

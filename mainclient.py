@@ -42,16 +42,8 @@ def sendtofile(newlst):
     import general_functions
     general_functions.csv_writelist('clients', 'clients', newlst, 1)
     print('Clicked on Send!')
+    print(newlst)
 
-# Functie beoordeel zorgt voor een output van True of False, aan de hand daarvan if, else statement maken.
-# def beoordeel(newlst):
-#         send(newlst)
-#     if goedgekeurd == True:
-#         send(newlst)
-#         print('Bedankt!')
-#     elif goedgekeurd is False:
-#         message = entry_message.get(1.0, END)
-#         return message
 ######
 # Client menu
 # Loops
@@ -62,16 +54,18 @@ def sendtofile(newlst):
 # Print DONE
 ####
 from tkinter import *
-from tkinter.scrolledtext import ScrolledText
+# from tkinter.scrolledtext import ScrolledText
+
+
 def clientmain(msg):
     import general_functions
     station = 'Utrecht'  # input
     station = general_functions.stationabbreviation(station)
     client = Tk()
+    client.config(bg='#FFCC18')
     client.wm_title(msg)
-
-    label_titel = Label(client, text='Client', bg='#FFCC18')
-    label_titel.config(font=('times', 24))
+    label_titel = Label(client, text='Please enter your feedback about NS below & press Send.')
+    label_titel.config(font=('times', 24), bg='#FFCC18')
     label_titel.grid(row=0, columnspan=12, sticky='n')
 
     label_2 = Label(client, text='Naam : ', bg='#FFCC18')
@@ -82,25 +76,30 @@ def clientmain(msg):
     label_3.config(font=('times', 24))
     label_3.grid(row=2, column=2, sticky='ne')
 
-    svar_naam = 'testgui'
     entry_naam = Entry(client, bg='#e6e6e6', borderwidth=4)
     entry_naam.config(font=('times', 20), width=40)
     entry_naam.grid(row=1, column=3, columnspan=4, sticky='nw')
-    entry_naam.insert(INSERT, '')
-
-    entry_message = ScrolledText(client, width=40, height=4, bg='#e6e6e6')
+    entry_naam.focus_force()
+    entry_message = Entry(client, bg='#e6e6e6', borderwidth=4)
     entry_message.config(font=('times', 18))
     entry_message.grid(row=2, column=3, columnspan=6, sticky='ew')
-    entry_message.insert(INSERT, '')
 
-    # svar_naam = entry_naam.get(1.0, END)
-    svar_bericht = entry_message.get(1.0, END)
     svar_date = definedate()
     svar_station = station
-    newlst = [svar_naam, svar_bericht, svar_date, svar_station]
-    print(newlst)
+    def getdata(date, station):
+        from mainadmin import popupmsg
+        name = entry_naam.get()
+        print('name:', name)
+        msg = entry_message.get()
+        print('msg:', msg)
+        lst = [name, msg, date, station]
+        sendtofile(lst)
+        entry_message.delete(0, END)
+        entry_naam.delete(0, END)
+        entry_naam.focus_force()
 
-    send = lambda: sendtofile(newlst)
+
+    send = lambda: getdata(svar_date, svar_station)
 
     button_cancel = Button(client, text="Cancel", bg='Red', command=client.destroy)
     button_send = Button(client, text='Verstuur', bg="Green", command=send)
