@@ -106,3 +106,4 @@ while loop == 0:
                 # popup -> wil je doorgaan?
                 # Ja = voer bestand opnieuw uit
                 # Nee = loop = 1
+                loop = 1
