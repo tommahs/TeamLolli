@@ -1,63 +1,25 @@
-######
-# Main Client file.
-# 1. Ask input from user, add tweetcounter + location
-# 2. Write to csv file
-# 3. Check if
-###
-
-# Twitter max characters = 140
-
-######
-# Asking user input
-####
-
-# def userinput(station):
-#     from general_functions import inputquestion
-#     try:
-#         fname = inputquestion('First name') #Check length, 10 characters max
-#         if len(fname) > 10:
-#             print('Name is too long')
-#             userinputlst = 1
-#             return userinputlst
-#         else:
-#             text = inputquestion('Tweet') #Check length, 120 char max
-#             if len(text) > 120:
-#                 print('Text is too long')
-#                 userinputlst = 2
-#                 return userinputlst
-#             date = definedate()
-#             userinputlst = [fname, text, date, station]
-#             return userinputlst
-#     except TypeError:
-#         print('Something has gone wrong, please try again')
-
-
 def definedate():
+    '''get current date/time'''
     from datetime import datetime
     date = datetime.now().strftime("20%y-%m-%d %H:%M")
     return date
 
 
 def sendtofile(newlst):
+    '''Write a list to a file'''
     import general_functions
     general_functions.csv_writelist('clients', 'clients', newlst, 1)
-    print('Clicked on Send!')
-    print(newlst)
 
-######
-# Client menu
-# Loops
-# Asks for user input
-# Defines current stations abbriviation
-# Combine the userinput into the client list from csv
-# Writes clientlist to csv
-# Print DONE
-####
+
 from tkinter import *
-# from tkinter.scrolledtext import ScrolledText
-
 
 def clientmain(msg):
+    '''Main window for the client.
+    - Ask for userinput
+    - Defines current station's abbreviation
+    - Combines userinput with the clientslist
+    - Write to clients.csv
+    - Clears both inputboxes'''
     import general_functions
     station = 'Utrecht'  # input
     station = general_functions.stationabbreviation(station)
@@ -87,14 +49,12 @@ def clientmain(msg):
     svar_date = definedate()
     svar_station = station
     def getdata(date, station):
+        '''get data from entry & check if the data is valid'''
         name = entry_naam.get()
-        print('name:', name)
         msg = entry_message.get()
-        print('msg:', msg)
         maxlength = (len(msg) + len(name))
         lst = [name, msg, date, station]
         if maxlength <= 125:
-            print("error")
             sendtofile(lst)
         entry_message.delete(0, END)
         entry_naam.delete(0, END)

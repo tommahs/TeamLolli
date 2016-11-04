@@ -81,7 +81,6 @@ def dividelists(oldlst, tweet):
         else:
             print('wut')
             pass
-
     return oldlst
 
 
@@ -103,10 +102,10 @@ def csv_writelist(file, oldfile, chlst, num):
     """"Writes lines to a file"""
     import csv
     writelist = checkdifferences(oldfile, chlst, num)
+    print('before', writelist)
     with open('{}.csv'.format(file), 'w', newline='') as csvwrite:
-        writer = csv.writer(csvwrite, delimiter = ';')
+        writer = csv.writer(csvwrite, delimiter=';')
         try:
-            print('writelist', writelist)
             for eachrow in writelist:
                 writer.writerow(eachrow)
         except:
