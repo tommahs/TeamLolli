@@ -38,10 +38,10 @@ def clientmain(msg):
     label_3.config(font=('Helvetica', 24))
     label_3.grid(row=2, column=2, sticky='ne')
 
-    entry_naam = Entry(client, bg='#e6e6e6', borderwidth=4)
-    entry_naam.config(font=('Helvetica', 20), width=40)
-    entry_naam.grid(row=1, column=3, columnspan=4, sticky='nw')
-    entry_naam.focus_force()
+    entry_name = Entry(client, bg='#e6e6e6', borderwidth=4)
+    entry_name.config(font=('Helvetica', 20), width=40)
+    entry_name.grid(row=1, column=3, columnspan=4, sticky='nw')
+    entry_name.focus_force()
     entry_message = Entry(client, bg='#e6e6e6', borderwidth=4)
     entry_message.config(font=('Helvetica', 18))
     entry_message.grid(row=2, column=3, columnspan=6, sticky='ew')
@@ -50,15 +50,15 @@ def clientmain(msg):
     svar_station = station
     def getdata(date, station):
         '''get data from entry & check if the data is valid'''
-        name = entry_naam.get()
+        name = entry_name.get()
         msg = entry_message.get()
         maxlength = (len(msg) + len(name))
         lst = [name, msg, date, station]
         if maxlength <= 125:
             sendtofile(lst)
         entry_message.delete(0, END)
-        entry_naam.delete(0, END)
-        entry_naam.focus_force()
+        entry_name.delete(0, END)
+        entry_name.focus_force()
 
 
     send = lambda: getdata(svar_date, svar_station)
