@@ -30,11 +30,11 @@ def clientmain(msg):
     label_titel.config(font=('Helvetica', 24), bg='#FFCC18')
     label_titel.grid(row=0, columnspan=12, sticky='n')
 
-    label_2 = Label(client, text='Naam : ', bg='#FFCC18')
+    label_2 = Label(client, text='Name : ', bg='#FFCC18')
     label_2.config(font=('Helvetica', 24))
     label_2.grid(row=1, column=2, sticky='ne')
 
-    label_3 = Label(client, text='Bericht : ', bg='#FFCC18')
+    label_3 = Label(client, text='Message : ', bg='#FFCC18')
     label_3.config(font=('Helvetica', 24))
     label_3.grid(row=2, column=2, sticky='ne')
 
@@ -64,7 +64,7 @@ def clientmain(msg):
     send = lambda: getdata(svar_date, svar_station)
 
     button_cancel = Button(client, text="Cancel", bg='Red', command=client.destroy)
-    button_send = Button(client, text='Verstuur', bg="Green", command=send)
+    button_send = Button(client, text='Send', bg="Green", command=send)
 
     button_cancel.config(font=('Helvetica', 32))
     button_cancel.grid(row=10, column=2)
