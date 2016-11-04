@@ -13,6 +13,23 @@ def csv_read(file):
 # returning the combined list & total number of rows in the newlist
 ####
 
+def replace(oldlst,newlst):
+    with open(oldlst,'r') as f:
+        with open(newlst,'w') as f1:
+            next(f) # skip header line
+            for line in f:
+                f1.write(line)
+
+
+
+def replace2(oldlst,newlst):
+    with open(oldlst, 'r') as f4:
+        with open(newlst,'w') as f5:
+            for line in f4:
+                f5.write(line)
+
+
+
 def combinelists(oldlst, newlst):
     combined = oldlst
     if newlst not in oldlst:
@@ -108,10 +125,15 @@ def popuptext(text):
 
 def accepted(eachtweet):
     import general_functions
+    from authenticator import oauth
     try:
         ##
         tweet = '{}: {} #{}'.format(eachtweet[0], eachtweet[1], eachtweet[3].upper())
-        print(tweet) ## input send to twitter function
+        r = oauth.request('statuses/update', {'status': tweet})
+        # print('SUCCES' if r.status_code == 200 else 'FAILURE')
+        ## input send to twitter function
+        replace("clients.csv","ReadyForAck.csv")
+        replace2("ReadyForAck.csv","clients.csv")
     except:
         print('ietsgaatfout')
 
