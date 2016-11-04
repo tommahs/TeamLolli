@@ -1,13 +1,8 @@
 from tkinter import *
-from tkinter.scrolledtext import ScrolledText
 
-
-#Functie beoordeel zorgt voor een output van True of False, aan de hand daarvan if, else statement maken.
 
 def beoordeel(goedgekeurd):
-    """
-    beoordeel(goedgekeurd=)
-    """
+    """Beoordeeld wat er gedaan moet worden"""
     import mainadmin, mainclient, logfilegui
     if goedgekeurd == 'quit':
         exit()
@@ -18,7 +13,9 @@ def beoordeel(goedgekeurd):
     elif goedgekeurd == 'log':
         logfilegui.logmain()
 
+
 def main():
+    '''Main menu'''
     root = Tk()
     root.title('NS Feedback Poster')
 
