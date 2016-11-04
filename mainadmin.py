@@ -68,7 +68,7 @@ def tweetAck(msg):
                     check.quit()
                 elif goedgekeurd is False:
                     general_functions.rejected(eachtweet)
-                    check.quit()
+                    check.destroy()
             accept = lambda: beoordeel(True, Tweets[tweetnum], tweetnum)
             reject = lambda: beoordeel(False, Tweets[tweetnum], tweetnum)
 
