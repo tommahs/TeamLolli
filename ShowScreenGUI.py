@@ -10,27 +10,21 @@ import sched, time
 RWindow = Tk()
 RWindow.geometry('600x1065')
 
-###################
 
-# Idee is het mogelijk om  de format van de message in een functie te zetten
-# En dat de functie de format gebruikt om verschillende messages te platens?
-
-###################
-
-
-# Label naam en Test Bericht
-svar_bericht = StringVar(RWindow, value='Het Bericht')
-svar_labelNaam = StringVar(RWindow, value='NS TWITTER')
-svar_naam = StringVar(RWindow, value='Naam Persoon')
+# Label name and Test Message
+svar_message = StringVar(RWindow, value='The Message')
+svar_labelname = StringVar(RWindow, value='NS TWITTER')
+svar_name = StringVar(RWindow, value='Name Person')
 
 
 
-# Functie om alles in te laden?             ## bericht == list of messages
-def toont_weet(naam, bericht,lblnaam):
-    svar_bericht.set(bericht)
-    svar_labelNaam.set(lblnaam)
-    svar_naam.set(naam)
+# Function to load in messages            ## message == list of messages
+def toont_weet(name, message,lblname):
+    svar_message.set(message)
+    svar_labelname.set(lblname)
+    svar_name.set(name)
 
+# Function to create list from showmaiscreen(amountofmessages)
 def createlist():
     counter = 0
     lst = []
@@ -52,61 +46,61 @@ def createlist():
     return lst
 
 
-    # Label Naam
+    # Label Name
 
 background_image = PhotoImage(file="bg_image.png")
 background_label = Label(RWindow, image=background_image)
 background_label.grid(rowspan=30, columnspan=12)
 
 
-label_naam = Message(RWindow, textvariable=svar_labelNaam, bg='white', borderwidth=5)
-label_naam.config(font=('times', 16), width=100)
-label_naam.grid(row=2, column=4, columnspan=10, sticky='n', ipadx='250', ipady='10',)
+label_name = Message(RWindow, textvariable=svar_labelname, bg='white', borderwidth=5)
+label_name.config(font=('times', 16), width=100)
+label_name.grid(row=2, column=4, columnspan=10, sticky='n', ipadx='250', ipady='10',)
 
 listofmessages = createlist()
 
-        # Bericht 1
+        # Message 1
 
 label_message1 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[0]), bg='#62C8FF')
 label_message1.config(font=('times', 12), width=400,anchor='w')
 label_message1.grid(row=3, column=1, columnspan=20,  sticky='ew', ipadx='100', ipady='10')
 
-        # Bericht 2
+        # Message 2
 label_message2 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[1]), bg='#D3D127')
 label_message2.config(font=('times', 12), width=400,anchor='w')
 label_message2.grid(row=4, column=3, columnspan=10,  sticky='ew', ipadx='100', ipady='10')
 
-        # Bericht 3
+        # Message 3
 label_message3 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[2]), bg='#62C8FF')
 label_message3.config(font=('times', 12), width=400,anchor='w')
 label_message3.grid(row=5, column=3, columnspan=10,  sticky='ew', ipadx='100', ipady='10')
 
-        # Bericht 4
+        # Message 4
 label_message4 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[3]), bg='#D3D127')
 label_message4.config(font=('times', 12), width=400,anchor='w')
 label_message4.grid(row=6, column=3, columnspan=10,  sticky='ew', ipadx='100', ipady='10')
 
-        # # Bericht 5
+        # Message 5
 label_message5 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[4]), bg='#62C8FF')
 label_message5.config(font=('times', 12), width=400,anchor='w')
 label_message5.grid(row=7, column=3, columnspan=10,  sticky='ew', ipadx='100', ipady='10')
 
-        # Bericht 6
+        # Message 6
 label_message6 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[5]), bg='#D3D127')
 label_message6.config(font=('times', 12), width=400,anchor='w')
 label_message6.grid(row=8, column=3, columnspan=10,  sticky='ew', ipadx='100', ipady='10')
 
-        # Bericht 7
+        # Message 7
 label_message7 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[6]), bg='#62C8FF')
 label_message7.config(font=('times', 12), width=400,anchor='w')
 label_message7.grid(row=9, column=3, columnspan=10,  sticky='ew', ipadx='100', ipady='10')
 
-        # Bericht 8
+        # Message 8
 label_message8 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[7]), bg='#D3D127')
 label_message8.config(font=('times', 12), width=400,anchor='w')
 label_message8.grid(row=10, column=3, columnspan=10,  sticky='ew', ipadx='100', ipady='10')
 
-        # Bericht 9
+        # Message 9
 label_message9 = Message(RWindow, textvariable = StringVar(RWindow, value=listofmessages[8]), bg='#62C8FF')
 label_message9.config(font=('times', 12), width=400,anchor='w')
 label_message9.grid(row=11, column=3, columnspan=10,  sticky='ew', ipadx='100', ipady='10')
