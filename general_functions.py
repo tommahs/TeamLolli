@@ -44,12 +44,11 @@ def checkdifferences(oldfile, changelist, num):
 
 
 def dividelists(oldlst, logfile):
-    for log in logfile:
-        for each in oldlst:
-            if each == log:
-                print('REMOVED {}: {}'.format(each[0], each[1]))
-                oldlst.remove(each)
-    return oldlst
+    lst = []
+    for each in oldlst:
+        if each not in logfile:
+            lst.append(each)
+    return lst
 ######
 # Write every list into a row in the csv file.
 # Input has become 'filename', 'filename', 'filename' without extensions
@@ -70,6 +69,7 @@ def csv_writelist(file, oldfile, chlst, num):
     with open('{}.csv'.format(file), 'w', newline='') as csvwrite:
         writer = csv.writer(csvwrite, delimiter = ';')
         try:
+            print(file, writelist)
             for eachrow in writelist:
                 writer.writerow(eachrow)
         except:
@@ -122,7 +122,7 @@ def rejected(eachtweet):
         # remove tweet from ReadyForAck
         general_functions.csv_writelist('logfile', 'logfile', eachtweet, 1)
         general_functions.csv_writelist('ReadyForAck', 'ReadyForAck', 'logfile', 3)
-        general_functions.popuptext('Rejected!')
+        print('Rejected!')
     except:
         "ietsgaatfout"
 

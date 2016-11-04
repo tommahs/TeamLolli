@@ -18,9 +18,7 @@ def tweetAck(msg):
         ### NEXT FUNCTIE
         try:
             svar_naam = Tweets[tweetnum][0]
-            # print(svar_naam)
             svar_bericht = Tweets[tweetnum][1]
-            # print('msg:', svar_bericht)
             check = Tk()
             check.wm_title(msg)
             ######
@@ -92,8 +90,8 @@ def tweetAck(msg):
             button_quit.config(font=('times', 32))
             button_quit.grid(row=11, column=5)
             print('Quit grid')
-            tweetnum += 1
             check.mainloop()
+            tweetnum += 1
         except:
             if IndexError:
                 loop = 1
