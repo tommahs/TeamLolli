@@ -61,7 +61,7 @@ def tweetAck(msg):
 
             button_reject = Button(check, text='Reject', bg="Red", command=reject)
 
-            button_accept = Button(check, text='accept', bg="Green", command=accept)
+            button_accept = Button(check, text='Accept', bg="Green", command=accept)
 
             button_quit = Button(check, text='Quit program', bg='Green', font=('Helvetica', 32), command=exit)
 
