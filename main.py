@@ -5,7 +5,7 @@ from tkinter.scrolledtext import ScrolledText
 #Functie beoordeel zorgt voor een output van True of False, aan de hand daarvan if, else statement maken.
 
 def beoordeel(goedgekeurd):
-    import mainadmin, mainclient
+    import mainadmin, mainclient, logfilegui
     if goedgekeurd == 'quit':
         exit()
     elif goedgekeurd == 'Client':
@@ -13,7 +13,7 @@ def beoordeel(goedgekeurd):
     elif goedgekeurd == 'Check Tweet':
         mainadmin.tweetAck('NS Approval App')
     elif goedgekeurd == 'log':
-        general_function
+        logfilegui.logmain()
 
 root = Tk()
 root.title('NS Feedback Poster')
@@ -34,7 +34,7 @@ log = lambda:beoordeel('log')
 
 button_client = Button(root, text='client', bg="red", font=('times', 32), command=client)
 button_check = Button(root, text='Acknowledge tweets', bg="Green",font=('times', 32), command=check)
-button_log = Button(root, text='View Logfile', bg='Gray', fonr=('times', 32), command=log)
+button_log = Button(root, text='View Logfile', bg='Gray', font=('times', 32), command=log)
 button_quit = Button(root, text='Quit program', bg='Green', font=('times', 32), command=quit)
 
 button_client.grid(row=1, column=2)
