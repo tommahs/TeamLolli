@@ -1,5 +1,11 @@
+import doctest
 def csv_read(file):
-    """"Reading file using csv_read("filename")"""
+    '''Reading file using csv_read("filename")
+    Reads file
+
+    >>> csv_read('test.csv')
+    [['simple', 'line']]
+    '''
     import csv
     file_content = []
     with open((file), 'r', newline='') as csvread:
@@ -13,7 +19,11 @@ def csv_read(file):
 ## replace and replace2 are used one after another in combination!
 
 def replace(oldlst,newlst):
-    """"Writing "client.csv" to "ReadyForAck.csv" without the first line of "client.csv" """
+    '''Writing "client.csv" to "ReadyForAck.csv" without the first line of "client.csv"
+    Rewriting newlst to be oldlst without first line
+
+    '''
+
     with open(oldlst,'r') as f:
         with open(newlst,'w') as f1:
             next(f)
@@ -35,7 +45,10 @@ def replace2(oldlst,newlst):
 
 
 def combinelists(oldlst, newlst):
-    """"Combines two lists to create 1 list without doubles"""
+    """"
+    Combines two lists to create 1 list without doubles
+
+    """
     combined = oldlst
     if newlst not in oldlst:
         combined.append(newlst)
