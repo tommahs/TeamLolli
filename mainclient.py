@@ -87,13 +87,15 @@ def clientmain(msg):
     svar_date = definedate()
     svar_station = station
     def getdata(date, station):
-        from mainadmin import popupmsg
         name = entry_naam.get()
         print('name:', name)
         msg = entry_message.get()
         print('msg:', msg)
+        maxlength = (len(msg) + len(name))
         lst = [name, msg, date, station]
-        sendtofile(lst)
+        if maxlength <= 125:
+            print("error")
+            sendtofile(lst)
         entry_message.delete(0, END)
         entry_naam.delete(0, END)
         entry_naam.focus_force()
