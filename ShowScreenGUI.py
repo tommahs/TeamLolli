@@ -20,7 +20,7 @@ RWindow.title('Main Screen')
 
 # Label naam en Test Bericht
 svar_bericht = StringVar(RWindow, value='Het Bericht')
-svar_labelNaam = StringVar(RWindow, value='Title "Berichten"')
+svar_labelNaam = StringVar(RWindow, value='Berichten')
 svar_naam = StringVar(RWindow, value='Naam Persoon')
 
 
