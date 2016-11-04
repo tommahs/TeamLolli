@@ -8,7 +8,7 @@ import sched, time
 
 # Starting Root-Window
 RWindow = Tk()
-
+RWindow.title('Main Screen')
 
 ###################
 
