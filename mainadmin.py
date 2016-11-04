@@ -7,43 +7,6 @@ def updatelist():
     pending = csv_read('ReadyForAck.csv')
     return pending
 
-
-
-
-
-
-def tweet(lst, tweetnum):
-    eachtweet = lst[tweetnum]
-    return eachtweet
-
-
-def svarname(tweet):
-    svarname = tweet[0]
-    return svarname
-
-
-def svarmsg(tweet):
-    svarmsg = tweet[1]
-    return svarmsg
-
-
-def popupmsg():
-    popup = Tk()
-    popup.wm_title('Continue?')
-    label = Label(popup, text='Do you wish to continue?')
-    # B1 = Button(popup, text="Okay", command=popup.destroy)
-    yes = lambda: popup.destroy()
-    no = lambda: exit
-    Button2 = Button(popup, text="Yes", command=yes)
-    Button3 = Button(popup,text="No", command=no)
-    # B1.pack()
-    Button2.pack()
-    Button3.pack()
-    popup.mainloop()
-    return
-
-
-
 def tweetAck(msg):
     tweetnum = 0
     loop = 0
