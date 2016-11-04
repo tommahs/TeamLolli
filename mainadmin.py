@@ -10,8 +10,8 @@ def updatelist():
 def tweetAck(msg):
     tweetnum = 0
     loop = 0
+    Tweets = updatelist()
     while loop == 0:
-        Tweets = updatelist()
         tweetslength = len(Tweets) - 1
         if tweetnum >= tweetslength:
             loop = 1
@@ -92,8 +92,8 @@ def tweetAck(msg):
             button_quit.config(font=('times', 32))
             button_quit.grid(row=11, column=5)
             print('Quit grid')
-            tweetnum += 1
             check.mainloop()
+            tweetnum += 1
         except:
             if IndexError:
                 loop = 1
