@@ -126,5 +126,5 @@ def loop():
     RWindow.after(5000,loop)
 
 
-RWindow.after(8000, loop)
+RWindow.after(120000, loop)
 RWindow.mainloop()
