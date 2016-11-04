@@ -102,4 +102,4 @@ def showmainscreenloop():
     looping(lst)
     mainloop()
 
-showmainscreenloop()
+# showmainscreenloop()

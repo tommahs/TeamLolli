@@ -8,15 +8,8 @@ def updatelist():
     return pending
 
 
-def beoordeel(goedgekeurd, eachtweet, tweetnum):
-    import general_functions
-    if goedgekeurd is True:
-        general_functions.accepted(eachtweet)
-        print(eachtweet)
-    elif goedgekeurd is False:
-        general_functions.rejected(eachtweet)
-    elif goedgekeurd == 'exit':
-        tweetAck.quit()
+
+
 
 
 def tweet(lst, tweetnum):
@@ -39,8 +32,8 @@ def popupmsg():
     popup.wm_title('Continue?')
     label = Label(popup, text='Do you wish to continue?')
     # B1 = Button(popup, text="Okay", command=popup.destroy)
-    yes = True
-    no = False
+    yes = lambda: popup.destroy()
+    no = lambda: exit
     Button2 = Button(popup, text="Yes", command=yes)
     Button3 = Button(popup,text="No", command=no)
     # B1.pack()
@@ -96,7 +89,7 @@ def tweetAck(msg):
             label_3.grid(row=2, column=2, sticky='ne')
             # print('Message label')
             ####
-            label_naam = Message(check, textvariable='svar_naam', bg='#e6e6e6', borderwidth=4)
+            # label_naam = (check, textvariable='svar_naam', bg='#e6e6e6', borderwidth=4)
             label_naam = Label(check, text=svar_naam, bg='#e6e6e6', borderwidth=4)
             label_naam.config(font=('times', 20), width=20)
             label_naam.grid(row=1, column=3, columnspan=4, sticky='nw')
@@ -107,6 +100,14 @@ def tweetAck(msg):
             label_message.grid(row=2, column=3, columnspan=5,  sticky='ew')
             label_message.config(font=('times', 18))
             # print("containing message")
+            def beoordeel(goedgekeurd, eachtweet, tweetnum):
+                import general_functions
+                if goedgekeurd is True:
+                    general_functions.accepted(eachtweet)
+                    check.quit()
+                elif goedgekeurd is False:
+                    general_functions.rejected(eachtweet)
+                    check.quit()
             accept = lambda: beoordeel(True, Tweets[tweetnum], tweetnum)
             reject = lambda: beoordeel(False, Tweets[tweetnum], tweetnum)
 
@@ -114,7 +115,8 @@ def tweetAck(msg):
             # print('Rejectbutton')
             button_accept = Button(check, text='accept', bg="Green", command=accept)
             # print('Accept button')
-            button_quit = Button(check, text="Cancel", bg='Red', command=check.quit)
+            button_cancel = Button(check, text="Quit", bg='Red', command=exit)
+            button_quit = Button(check, text='Quit program', bg='Green', font=('times', 32), command=exit)
             # print('Quit button')
             button_reject.config(font=('times', 32))
             button_reject.grid(row=11, column=1)
@@ -122,12 +124,13 @@ def tweetAck(msg):
             button_accept.config(font=('times', 32))
             button_accept.grid(row=11, column=10)
             # print('Accept grid')
+            button_cancel.config(font=('times', 32))
+            button_cancel.grid(row=11, column=5)
             button_quit.config(font=('times', 32))
             button_quit.grid(row=11, column=5)
             print('Quit grid')
             tweetnum += 1
             check.mainloop()
-
         except:
             if IndexError:
                 loop = 1
@@ -135,17 +138,8 @@ def tweetAck(msg):
                 print('test')
         try:
             print(tweetnum)
-            next = popupmsg()
-            if next is True:
-                break
-            else:
-                continue
         except:
             print("except")
-
         finally:
-            if next is True:
-                pass
-            else:
-                loop = 1
+            check.destroy()
 # tweetAck('Client')
