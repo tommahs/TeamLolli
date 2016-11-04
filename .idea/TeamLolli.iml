@@ -2,7 +2,11 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
+<<<<<<< Updated upstream
     <orderEntry type="jdk" jdkName="Python 3.5.2 (C:\Users\Jasper-flaptop2de\AppData\Local\Programs\Python\Python35-32\python.exe)" jdkType="Python SDK" />
+=======
+    <orderEntry type="jdk" jdkName="Python 3.5.2 (C:\Users\Koen\AppData\Local\Programs\Python\Python35\python.exe)" jdkType="Python SDK" />
+>>>>>>> Stashed changes
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
