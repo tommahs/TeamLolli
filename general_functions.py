@@ -49,24 +49,39 @@ def checkdifferences(oldfile, changelist, num):
         currentcontent = csv_read('{}.csv'.format(changelist)) #clientlist
         combined = []
         for each in currentcontent:
-            for elk in each:
+            # for elk in each:
                 combined + each
         newlst = combinelists(currentcontent, combined)
         return newlst
     if num == 3: # removing the doubles from each list
         currentcontent = csv_read('{}.csv'.format(oldfile))  # ReadyForAck
-        changecontent = csv_read('{}.csv'.format(changelist))  # Logfile
+        changecontent = changelist
         newlist = dividelists(currentcontent, changecontent)
         return newlist
 
 
-def dividelists(oldlst, logfile):
-    for log in logfile:
-        for each in oldlst:
-            if each == log:
-                print('REMOVED {}: {}'.format(each[0], each[1]))
-                oldlst.remove(each)
+# def dividelists(oldlst, logfile):
+#     lst = []
+#     for each in oldlst:
+#         if each in logfile:
+#             lst.append(each)
+#             print('list:', lst)
+#         else:
+#             print('Logged.', each)
+#     return lst
+def dividelists(oldlst, tweet):
+    for each in oldlst:
+        if each == tweet:
+            print('REMOVED', each[0], each[1], each[2], each[3])
+            print('true:', each)
+            oldlst.remove(each)
+            print('each:', each)
+        else:
+            print('wut')
+            pass
+
     return oldlst
+
 ######
 # Write every list into a row in the csv file.
 # Input has become 'filename', 'filename', 'filename' without extensions
@@ -87,6 +102,7 @@ def csv_writelist(file, oldfile, chlst, num):
     with open('{}.csv'.format(file), 'w', newline='') as csvwrite:
         writer = csv.writer(csvwrite, delimiter = ';')
         try:
+            print('writelist', writelist)
             for eachrow in writelist:
                 writer.writerow(eachrow)
         except:
@@ -143,8 +159,7 @@ def rejected(eachtweet):
         # write to logfile
         # remove tweet from ReadyForAck
         general_functions.csv_writelist('logfile', 'logfile', eachtweet, 1)
-        general_functions.csv_writelist('ReadyForAck', 'ReadyForAck', 'logfile', 3)
-        general_functions.popuptext('Rejected!')
+        general_functions.csv_writelist('ReadyForAck', 'ReadyForAck', eachtweet, 3)
     except:
         "ietsgaatfout"
 

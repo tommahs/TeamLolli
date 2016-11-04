@@ -18,9 +18,7 @@ def tweetAck(msg):
         ### NEXT FUNCTIE
         try:
             svar_naam = Tweets[tweetnum][0]
-            # print(svar_naam)
             svar_bericht = Tweets[tweetnum][1]
-            # print('msg:', svar_bericht)
             check = Tk()
             check.wm_title(msg)
             ######
@@ -70,7 +68,7 @@ def tweetAck(msg):
                     check.quit()
                 elif goedgekeurd is False:
                     general_functions.rejected(eachtweet)
-                    check.quit()
+                    check.destroy()
             accept = lambda: beoordeel(True, Tweets[tweetnum], tweetnum)
             reject = lambda: beoordeel(False, Tweets[tweetnum], tweetnum)
 
